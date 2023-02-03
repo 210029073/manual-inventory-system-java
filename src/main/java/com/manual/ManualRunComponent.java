@@ -1,7 +1,16 @@
 package com.manual;
 
-public class ManualRunComponent {
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class ManualRunComponent extends Application {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage stage) throws Exception {
+
     }
 }
