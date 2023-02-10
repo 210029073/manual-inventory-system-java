@@ -1,4 +1,5 @@
 com/manual/ManualDatabaseConnection.class
+com/manual/productManagement/AddProductController.class
 com/manual/login/LoginController.class
 com/manual/menu/MenuController.class
 com/manual/ManualRunComponent.class

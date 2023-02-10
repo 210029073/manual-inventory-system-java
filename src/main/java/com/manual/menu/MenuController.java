@@ -1,5 +1,6 @@
 package com.manual.menu;
 
+import com.manual.productManagement.AddProductController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -44,13 +45,14 @@ public class MenuController {
     public void addItem() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com.manual.main/add_employee.fxml"));
+        final AddProductController addProductController = new AddProductController();
+
 
         try {
             Stage stage = new Stage();
             Parent parent = loader.load();
-
             loader.setRoot(parent);
-
+            loader.setController(addProductController);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Add a car");
             stage.setResizable(false);
