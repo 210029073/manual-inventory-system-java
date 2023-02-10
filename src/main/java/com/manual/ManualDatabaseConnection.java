@@ -10,7 +10,7 @@ public class ManualDatabaseConnection {
     private final String password;
     private static ManualDatabaseConnection instance;
     private ManualDatabaseConnection() {
-        URLConnection = "jdbc:mysql://localhost:3306/manual_my";
+        URLConnection = "jdbc:mysql://localhost:3306/manual";
         username = "root";
         password = "";
     }

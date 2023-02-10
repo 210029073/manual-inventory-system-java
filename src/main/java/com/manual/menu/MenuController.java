@@ -40,6 +40,31 @@ public class MenuController {
         }
     }
 
+    @FXML
+    public void addItem() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/add_employee.fxml"));
+
+        try {
+            Stage stage = new Stage();
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Add a car");
+            stage.setResizable(false);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * This will simply exit the menu
      * @author Ibrahim Ahmad (210029073)
