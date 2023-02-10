@@ -6,8 +6,7 @@ package com.manual.model;
  * @since 10/02/2023
  * */
 public class Product {
-    private final int id;
-    private String productName;
+    private int id;
     private String productModel;
     private String productBrand;
     private String productDescription;
@@ -20,8 +19,6 @@ public class Product {
      * Constructs a product populated with its details.
      * @author Ibrahim Ahmad (210029073)*/
     public Product(
-            int id,
-            String productName,
             String productModel,
             String productBrand,
             String productDescription,
@@ -30,8 +27,6 @@ public class Product {
             String imageFilePath,
             int likes) {
 
-        this.id = id;
-        this.productName = productName;
         this.productModel = productModel;
         this.productBrand = productBrand;
         this.productDescription = productDescription;
@@ -45,10 +40,8 @@ public class Product {
      * Constructs a product with no or very little details, though involves specifying an id
      * @author Ibrahim Ahmad (210029073)
      * */
-    public Product(int id) {
+    public Product() {
         this(
-                id,
-                null,
                 null,
                 null,
                 null,
@@ -61,14 +54,6 @@ public class Product {
 
     public int getId() {
         return id;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
     }
 
     public String getProductModel() {
