@@ -1,7 +1,7 @@
 package com.manual.model;
 
 /**
- * Models a generic car object, can be enhanced using inheritance
+ * Models a generic car object, that can be enhanced using inheritance
  * @author Ibrahim Ahmad (210029073)
  * @since 10/02/2023
  * */
