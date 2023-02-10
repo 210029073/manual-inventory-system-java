@@ -10,9 +10,9 @@ public class ManualDatabaseConnection {
     private final String password;
     private static ManualDatabaseConnection instance;
     private ManualDatabaseConnection() {
-        URLConnection = "jdbc:mysql://localhost:3306/db_name";
-        username = "username";
-        password = "password";
+        URLConnection = "jdbc:mysql://localhost:3306/manual_my";
+        username = "root";
+        password = "";
     }
 
     public Connection getConnection() {
@@ -27,7 +27,7 @@ public class ManualDatabaseConnection {
         return null;
     }
 
-    public ManualDatabaseConnection getInstance() {
+    public static ManualDatabaseConnection getInstance() {
         if(instance == null) {
             instance = new ManualDatabaseConnection();
         }
