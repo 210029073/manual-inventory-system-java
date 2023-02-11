@@ -7,10 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class AddProductController {
@@ -32,18 +34,23 @@ public class AddProductController {
     private TextField txtProductPopularity;
 
     @FXML
-    public void fileBrowse() {
+    public void fileBrowse() throws IOException {
         FileChooser fileChooser = new FileChooser();
 
             Stage stage = new Stage();
             Parent parent = txtProductModel.getParent().getParent();
+            VBox vBox = new VBox();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Add a car");
             stage.setResizable(false);
 
-            Scene scene = new Scene(parent);
-            stage.setScene(scene);
-            stage.showAndWait();
+            Scene scene = new Scene(vBox);
+            File f = fileChooser.showOpenDialog(vBox.getScene().getWindow());
+            if(f == null) {}
+            else txtImagePath.setText(f.getName());
+//            vBox.getChildren().add();
+//            stage.setScene(scene);
+//            stage.showAndWait();
 
         System.out.println("Coming soon...");
     }
