@@ -58,4 +58,8 @@ public class ProductListController {
         tblProduct.setItems(prd);
     }
 
+    @FXML
+    public void btnClose() {
+        tblProduct.getScene().getWindow().hide();
+    }
 }

@@ -3,4 +3,5 @@ com/manual/productManagement/AddProductController.class
 com/manual/collections/ProductCollections.class
 com/manual/login/LoginController.class
 com/manual/menu/MenuController.class
+com/manual/productManagement/ProductListController.class
 com/manual/ManualRunComponent.class
