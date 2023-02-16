@@ -1,7 +1,11 @@
 package com.manual.model;
 
-import javafx.beans.property.*;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.StringProperty;
+import javafx.beans.property.FloatProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 /**
  * Models a generic car object, that can be enhanced using inheritance
@@ -43,17 +47,17 @@ public class Product {
      * Constructs a product with no or very little details, though involves specifying an id
      * @author Ibrahim Ahmad (210029073)
      * */
-//    public Product() {
-//        this(
-//                null,
-//                null,
-//                null,
-//                0.0F,
-//                (ObservableValue<Integer>) 0,
-//                null,
-//                0
-//        );
-//    }
+    public Product() {
+        this(
+                null,
+                null,
+                null,
+                0.0F,
+                0,
+                null,
+                0
+        );
+    }
 
     public int getId() {
         return id;
