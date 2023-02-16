@@ -75,4 +75,29 @@ public class MenuController {
     public void exitMenu() {
         System.exit(0);
     }
+
+    @FXML
+    public void btnViewItems() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/list_products.fxml"));
+
+        try {
+            Stage stage = new Stage();
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("View list of products");
+            stage.setResizable(false);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
