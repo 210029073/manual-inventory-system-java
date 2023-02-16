@@ -1,5 +1,8 @@
 package com.manual.model;
 
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
+
 /**
  * Models a generic car object, that can be enhanced using inheritance
  * @author Ibrahim Ahmad (210029073)
@@ -7,12 +10,12 @@ package com.manual.model;
  * */
 public class Product {
     private int id;
-    private String productModel;
-    private String productBrand;
-    private String productDescription;
-    private float productPrice;
-    private int quantity;
-    private String imageFilePath;
+    private StringProperty productModel;
+    private StringProperty productBrand;
+    private StringProperty productDescription;
+    private FloatProperty productPrice;
+    private Integer quantity;
+    private StringProperty imageFilePath;
     private int likes;
 
     /**
@@ -23,16 +26,16 @@ public class Product {
             String productBrand,
             String productDescription,
             float productPrice,
-            int quantity,
+            Integer quantity,
             String imageFilePath,
             int likes) {
 
-        this.productModel = productModel;
-        this.productBrand = productBrand;
-        this.productDescription = productDescription;
-        this.productPrice = productPrice;
+        this.productModel = new SimpleStringProperty(productModel);
+        this.productBrand = new SimpleStringProperty(productBrand);
+        this.productDescription = new SimpleStringProperty(productDescription);
+        this.productPrice = new SimpleFloatProperty(productPrice);
         this.quantity = quantity;
-        this.imageFilePath = imageFilePath;
+        this.imageFilePath = new SimpleStringProperty(imageFilePath);
         this.likes = likes;
     }
 
@@ -40,69 +43,87 @@ public class Product {
      * Constructs a product with no or very little details, though involves specifying an id
      * @author Ibrahim Ahmad (210029073)
      * */
-    public Product() {
-        this(
-                null,
-                null,
-                null,
-                0.0F,
-                0,
-                null,
-                0
-        );
-    }
+//    public Product() {
+//        this(
+//                null,
+//                null,
+//                null,
+//                0.0F,
+//                (ObservableValue<Integer>) 0,
+//                null,
+//                0
+//        );
+//    }
 
     public int getId() {
         return id;
     }
 
     public String getProductModel() {
-        return productModel;
+        return productModel.getValue();
     }
 
-    public void setProductModel(String productModel) {
-        this.productModel = productModel;
-    }
+    public StringProperty modelProperty() { return this.productModel; }
+
+//    public void setProductModel(String productModel) {
+//        this.productModel = productModel;
+//    }
 
     public String getProductBrand() {
-        return productBrand;
+        return productBrand.getValue();
     }
 
-    public void setProductBrand(String productBrand) {
-        this.productBrand = productBrand;
-    }
+    public StringProperty brandProperty() { return this.productBrand; }
+
+//    public void setProductBrand(String productBrand) {
+//        this.productBrand = productBrand;
+//    }
 
     public String getProductDescription() {
-        return productDescription;
+        return productDescription.get();
     }
 
     public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+        this.productDescription.set(productDescription);
+    }
+
+    public StringProperty productDescProperty() {
+        return this.productDescription;
     }
 
     public float getProductPrice() {
-        return productPrice;
+        return productPrice.get();
     }
 
     public void setProductPrice(float productPrice) {
-        this.productPrice = productPrice;
+        this.productPrice.set(productPrice);
     }
 
-    public int getQuantity() {
+    public FloatProperty productPriceProperty() {
+        return productPrice;
+    }
+
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
+    public IntegerProperty quantityProperty() {
+        return new SimpleIntegerProperty(quantity);
+    }
+
     public String getImageFilePath() {
-        return imageFilePath;
+        return imageFilePath.get();
     }
 
     public void setImageFilePath(String imageFilePath) {
-        this.imageFilePath = imageFilePath;
+        this.imageFilePath.set(imageFilePath);
     }
+
+    public StringProperty imageFilePathProperty() { return this.imageFilePath; }
 
     public int getLikes() {
         return likes;

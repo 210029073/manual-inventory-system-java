@@ -1,6 +1,7 @@
 package com.manual.menu;
 
 import com.manual.productManagement.AddProductController;
+import com.manual.productManagement.ProductListController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -80,13 +81,14 @@ public class MenuController {
     public void btnViewItems() {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com.manual.main/list_products.fxml"));
-
+        final ProductListController productListController = new ProductListController();
         try {
             Stage stage = new Stage();
+            loader.setController(productListController);
+
             Parent parent = loader.load();
 
             loader.setRoot(parent);
-
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("View list of products");
             stage.setResizable(false);

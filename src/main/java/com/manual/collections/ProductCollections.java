@@ -2,10 +2,7 @@ package com.manual.collections;
 import com.manual.ManualDatabaseConnection;
 import com.manual.model.Product;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,5 +36,34 @@ public class ProductCollections {
         catch (SQLException e) {
             System.err.println("Failed to add a record: " + e.getMessage());
         }
+    }
+
+    public List<Product> getProducts() {
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM products");
+            while (resultSet.next()) {
+                Product product = new Product(
+                        resultSet.getString("model"),
+                        resultSet.getString("brand"),
+                        resultSet.getString("description"),
+                        resultSet.getFloat("price"),
+                        resultSet.getInt("stock"),
+                        resultSet.getString("image"),
+                        resultSet.getInt("likes")
+                );
+
+                products.add(product);
+            }
+
+        }
+
+        catch (SQLException e) {
+            System.err.println("Failed to add a record: " + e.getMessage());
+        }
+
+        return products;
+
     }
 }
