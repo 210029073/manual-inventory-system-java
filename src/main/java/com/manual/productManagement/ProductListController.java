@@ -65,6 +65,10 @@ public class ProductListController {
 
     @FXML
     public void btnRemove() {
+        Product target = tblProduct.getSelectionModel().getSelectedItem();
+        ProductCollections pc = new ProductCollections();
+        pc.removeProductRecord(target);
+        System.out.println(target.getProductBrand() + " " + target.getProductModel());
         System.out.println("Remove an item. Coming Soon.");
     }
 }

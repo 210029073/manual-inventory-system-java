@@ -38,6 +38,22 @@ public class ProductCollections {
         }
     }
 
+    public void removeProductRecord(Product target) {
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+
+            PreparedStatement preparedStatement = connection.prepareStatement
+                    ("DELETE FROM products WHERE" + " model = ?");
+            preparedStatement.setString(1, target.getProductModel());
+            preparedStatement.executeUpdate();
+            System.out.println("Successfully deleted a record.");
+        }
+
+        catch(SQLException sqlException) {
+            System.out.println("Failed to delete an item: " + sqlException.getMessage());
+        }
+    }
+
     public List<Product> getProducts() {
         try {
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();
