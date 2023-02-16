@@ -1,9 +1,7 @@
 package com.manual.productManagement;
 
-import com.manual.ManualDatabaseConnection;
 import com.manual.collections.ProductCollections;
 import com.manual.model.Product;
-import javafx.beans.property.IntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -44,6 +42,8 @@ public class ProductListController {
         ProductCollections productCollections = new ProductCollections();
         ArrayList<Product> data = new ArrayList<>(productCollections.getProducts());
         ObservableList<Product> prd = FXCollections.observableArrayList(data);
+
+        //dummy product
         prd.add(new Product("330D", "BMW", "BMW E46 330D DIESEL 3.0 Litre V6 Engine", 1023.98F, 12, "na.img", 500));
 
         colBrand.setCellValueFactory(cell -> cell.getValue().brandProperty());
