@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -74,7 +76,14 @@ public class MenuController {
      * @since 10/02/2023*/
     @FXML
     public void exitMenu() {
-        System.exit(0);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to continue?", ButtonType.OK, ButtonType.CANCEL);
+        alert.setTitle("Exiting Inventory System");
+        alert.setHeaderText("Exiting Inventory System");
+        alert.showAndWait();
+
+        if(alert.getResult() == ButtonType.OK) {
+            System.exit(0);
+        }
     }
 
     @FXML

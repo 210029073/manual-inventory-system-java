@@ -16,7 +16,6 @@
       <HBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="256.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
          <children>
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#addItem" prefHeight="256.0" prefWidth="345.0" text="Add an Item" HBox.hgrow="ALWAYS" />
-            <Button layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="256.0" prefWidth="345.0" text="Remove an Item" HBox.hgrow="ALWAYS" />
             <Button layoutX="355.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="256.0" prefWidth="345.0" text="Manage Orders" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>

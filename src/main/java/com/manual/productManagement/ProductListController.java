@@ -62,4 +62,9 @@ public class ProductListController {
     public void btnClose() {
         tblProduct.getScene().getWindow().hide();
     }
+
+    @FXML
+    public void btnRemove() {
+        System.out.println("Remove an item. Coming Soon.");
+    }
 }
