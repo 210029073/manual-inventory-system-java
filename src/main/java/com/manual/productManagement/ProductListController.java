@@ -69,14 +69,15 @@ public class ProductListController {
     public void btnRemove() {
         Product target = tblProduct.getSelectionModel().getSelectedItem();
         ProductCollections pc = new ProductCollections();
-        pc.removeProductRecord(target);
 
+        //confirmation before deleting
         Alert deleteAlert = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to delete "+ target.getProductBrand() + " " + target.getProductModel() + " from inventory?", ButtonType.OK, ButtonType.CANCEL);
         deleteAlert.setTitle("Deleting an item from inventory");
         deleteAlert.setHeaderText("Are you sure you want to continue?");
         deleteAlert.showAndWait();
 
         if(deleteAlert.getResult() == ButtonType.OK) {
+            pc.removeProductRecord(target);
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully deleted " + target.getProductBrand() + " " + target.getProductModel() + ".", ButtonType.OK);
             alert.setTitle("Removed product successfully");
             alert.setHeaderText("Successfully removed an item from inventory");
