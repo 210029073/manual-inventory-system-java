@@ -105,4 +105,23 @@ public class ProductCollections {
         return products;
 
     }
+
+    public int productAmount() {
+        int quantity = 0;
+
+        for(Product p : getProducts()) {
+            quantity += 1;
+        }
+
+        return quantity;
+    }
+
+    public int totalStockInInventory() {
+        int total = 0;
+        for(Product p : getProducts()) {
+            total += p.getQuantity();
+        }
+
+        return total;
+    }
 }
