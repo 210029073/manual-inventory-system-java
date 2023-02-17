@@ -14,7 +14,7 @@
          <children>
             <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnLoad" prefHeight="75.0" prefWidth="67.0" text="Load" />
             <Button layoutX="15.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnRemove" prefHeight="75.0" prefWidth="67.0" text="Remove" />
-            <Button layoutX="15.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" text="Update" />
+            <Button layoutX="15.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnUpdate" prefHeight="75.0" prefWidth="67.0" text="Update" />
             <Button layoutX="15.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
             <Button layoutX="15.0" layoutY="204.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnClose" prefHeight="75.0" prefWidth="67.0" text="Exit" />
          </children>

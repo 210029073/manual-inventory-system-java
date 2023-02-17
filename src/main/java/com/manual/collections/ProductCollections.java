@@ -38,6 +38,10 @@ public class ProductCollections {
         }
     }
 
+    public void updateProductRecord(Product product) {
+
+    }
+
     public void removeProductRecord(Product target) {
         try {
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();

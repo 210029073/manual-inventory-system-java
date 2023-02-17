@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manual.productManagement.ProductUpdateController">
+   <children>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="90.0" spacing="15.0" style="-fx-background-color: grey;">
+         <children>
+            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
+            <Button layoutX="15.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
+            <Button layoutX="15.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
+            <Button layoutX="15.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
+            <Button layoutX="15.0" layoutY="204.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </VBox>
+      <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="934.0">
+         <children>
+            <HBox layoutX="110.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+               <children>
+                  <Label text="Product Name:">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtProductName" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="130.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+               <children>
+                  <Label text="Product Model">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtProductModel" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="130.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="13.0">
+               <children>
+                  <Label text="Product Description">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextArea fx:id="txtProductDescription" maxWidth="1.7976931348623157E308" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="130.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+               <children>
+                  <Label text="Product Brand">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtProductBrand" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="130.0" layoutY="222.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+               <children>
+                  <Label text="Product Price:">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtProductPrice" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="110.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="43.0">
+               <children>
+                  <Label text="Product Stock:">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtProductStock" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="110.0" layoutY="409.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0">
+               <children>
+                  <Label text="Image path:">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="50.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtImagePath" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="240.0" />
+                  <Button mnemonicParsing="false" onMouseClicked="#fileBrowse" prefWidth="75.0" text="Browse">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="110.0" layoutY="409.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="15.0">
+               <children>
+                  <Label text="Product Popularity">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtProductPopularity" maxWidth="1.7976931348623157E308" prefHeight="28.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="110.0" layoutY="571.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" spacing="15.0">
+               <padding>
+                  <Insets left="50.0" right="50.0" />
+               </padding>
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#addItem" prefWidth="75.0" text="OK">
+                     <padding>
+                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                     </padding>
+                  </Button>
+                  <Button mnemonicParsing="false" onMouseClicked="#closeDialog" prefWidth="75.0" text="Cancel">
+                     <padding>
+                        <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="100.0" left="100.0" right="100.0" top="75.0" />
+         </padding>
+      </VBox>
+   </children>
+</HBox>
