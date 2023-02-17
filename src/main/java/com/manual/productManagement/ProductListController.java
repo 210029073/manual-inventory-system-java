@@ -41,6 +41,10 @@ public class ProductListController {
     @FXML
     private TableColumn<Product, String> colLikes;
 
+    public void initialize() {
+        btnLoad();
+    }
+
     @FXML
     private void btnLoad() {
 
@@ -71,6 +75,12 @@ public class ProductListController {
     @FXML
     public void btnRemove() {
         Product target = tblProduct.getSelectionModel().getSelectedItem();
+        if(tblProduct.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please select an item to delete from inventory");
+            alert.setTitle("Failed to remove item");
+            alert.setHeaderText("An error occurred when removing an item");
+            alert.showAndWait();
+        }
         ProductCollections pc = new ProductCollections();
 
         //confirmation before deleting

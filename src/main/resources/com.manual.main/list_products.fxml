@@ -12,7 +12,7 @@
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="90.0" spacing="15.0" style="-fx-background-color: grey;">
          <children>
-            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnLoad" prefHeight="75.0" prefWidth="67.0" text="Load" />
+            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnLoad" prefHeight="75.0" prefWidth="67.0" text="Refresh" />
             <Button layoutX="15.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnRemove" prefHeight="75.0" prefWidth="67.0" text="Remove" />
             <Button layoutX="15.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnUpdate" prefHeight="75.0" prefWidth="67.0" text="Update Stock" textAlignment="CENTER" wrapText="true" />
             <Button layoutX="15.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
