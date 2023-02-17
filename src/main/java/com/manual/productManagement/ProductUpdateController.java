@@ -120,6 +120,7 @@ public class ProductUpdateController {
         Product p = new Product(txtProductModel.getText(), txtProductBrand.getText(),
                 txtProductDescription.getText(), Float.parseFloat(txtProductPrice.getText()),
                 Integer.parseInt(txtProductStock.getText()), txtImagePath.getText(), Integer.parseInt(txtProductPopularity.getText()));
+        p.setID(candidate.getId());
         //update product record
         pc.updateProductRecord(p);
 

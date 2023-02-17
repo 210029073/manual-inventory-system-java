@@ -41,16 +41,14 @@ public class ProductCollections {
     public void updateProductRecord(Product product) {
         try {
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();
-            PreparedStatement sql = connection.prepareStatement(
-                    "UPDATE products SET `brand` = ?, `model` = ?, `description` = ?, `price` = ?, `stock` = ?, `image` = ?, `likes` = ? WHERE `productsId` = ?"
-            );
-            sql.setString(1, product.getProductBrand());
+            PreparedStatement sql = connection.prepareStatement("UPDATE products SET `stock` = ?, `model` = ?, `brand` = ?, `description` = ?, `price` = ?, `likes` = ?, `image` = ? WHERE `productsId` = ?");
+            sql.setInt(1, product.getQuantity());
             sql.setString(2, product.getProductModel());
-            sql.setString(3, product.getProductDescription());
-            sql.setFloat(4, product.getProductPrice());
-            sql.setInt(5, product.getQuantity());
-            sql.setString(6, product.getImageFilePath());
-            sql.setInt(7, product.getLikes());
+            sql.setString(3, product.getProductBrand());
+            sql.setString(4, product.getProductDescription());
+            sql.setFloat(5, product.getProductPrice());
+            sql.setInt(6, product.getLikes());
+            sql.setString(7, product.getImageFilePath());
             sql.setInt(8, product.getId());
             sql.executeUpdate();
             System.out.println("Successfully updated a record");
@@ -105,17 +103,6 @@ public class ProductCollections {
         }
 
         return products;
-
-    }
-
-    public static void main(String[] args) {
-        Product p = new Product("330D", "BMW", "BMW E46 330D DIESEL 3.0 Litre V6 Engine", 1023.98F, 12, "na.img", 500);
-        ProductCollections productCollections = new ProductCollections();
-//        productCollections.addProductRecord(p);
-        String tmp = "2002 " + p.getProductDescription();
-        p.setImageFilePath(tmp);
-        productCollections.updateProductRecord(p);
-//        p.setProductPrice();
 
     }
 }

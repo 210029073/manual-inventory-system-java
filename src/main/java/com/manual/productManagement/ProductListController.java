@@ -104,6 +104,12 @@ public class ProductListController {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/com.manual.main/update_stock.fxml"));
         Product target = tblProduct.getSelectionModel().getSelectedItem();
+        if(tblProduct.getSelectionModel().getSelectedItem() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please select an item from inventory");
+            alert.setTitle("Error occurred when updating");
+            alert.setHeaderText("An error occurred when updating a stock");
+            alert.showAndWait();
+        }
         final ProductUpdateController productUpdateController = new ProductUpdateController(target);
         try {
             Stage stage = new Stage();
@@ -117,6 +123,8 @@ public class ProductListController {
             Scene scene = new Scene(parent);
             stage.setScene(scene);
             stage.showAndWait();
+
+            btnLoad();
         }
 
         catch (IOException e) {
