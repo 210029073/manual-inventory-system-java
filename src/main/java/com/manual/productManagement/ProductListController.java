@@ -91,8 +91,7 @@ public class ProductListController {
             deleteAlert.close();
         }
 
-
-        System.out.println(target.getProductBrand() + " " + target.getProductModel());
-        System.out.println("Remove an item. Coming Soon.");
+            
+//        System.out.println(target.getProductBrand() + " " + target.getProductModel());
     }
 }
