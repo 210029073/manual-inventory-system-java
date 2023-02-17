@@ -5,6 +5,8 @@ import com.manual.model.Product;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -68,6 +70,13 @@ public class ProductListController {
         Product target = tblProduct.getSelectionModel().getSelectedItem();
         ProductCollections pc = new ProductCollections();
         pc.removeProductRecord(target);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully deleted " + target.getProductBrand() + " " + target.getProductModel() + ".", ButtonType.OK);
+        alert.setTitle("Removed product successfully");
+        alert.setHeaderText("Successfully removed an item from inventory");
+        alert.showAndWait();
+        if(alert.getAlertType() == Alert.AlertType.CONFIRMATION) {
+            btnLoad(); //reload table
+        }
         System.out.println(target.getProductBrand() + " " + target.getProductModel());
         System.out.println("Remove an item. Coming Soon.");
     }

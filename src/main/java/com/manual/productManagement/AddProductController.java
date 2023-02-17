@@ -5,6 +5,7 @@ import com.manual.model.Product;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -58,6 +59,40 @@ public class AddProductController {
     @FXML
     public void addItem() {
         ProductCollections pc = new ProductCollections();
+
+        //validations
+        try{
+            Float test = Float.parseFloat(txtProductPrice.getText());
+        }
+        catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter the price in two decimal places like 0.00");
+            alert.setTitle("Error occurred while parsing stock price");
+            alert.setHeaderText("An error occurred when processing the price");
+            alert.showAndWait();
+            e.printStackTrace();
+        }
+
+        try{
+            Integer test = Integer.parseInt(txtProductStock.getText());
+        }
+        catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter the stock value in numeric.");
+            alert.setTitle("Error occurred while parsing stock value");
+            alert.setHeaderText("An error occurred when processing the stock value");
+            alert.showAndWait();
+            e.printStackTrace();
+        }
+
+        try{
+            Integer test = Integer.parseInt(txtProductPopularity.getText());
+        }
+        catch (NumberFormatException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter the popularity in numeric");
+            alert.setTitle("Error occurred while parsing popularity");
+            alert.setHeaderText("An error occurred when processing the popularity value");
+            alert.showAndWait();
+            e.printStackTrace();
+        }
         Product product = new Product(this.txtProductModel.getText(),
                 this.txtProductBrand.getText(),
                 this.txtProductDescription.getText(),
