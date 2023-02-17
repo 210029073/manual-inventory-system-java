@@ -70,13 +70,27 @@ public class ProductListController {
         Product target = tblProduct.getSelectionModel().getSelectedItem();
         ProductCollections pc = new ProductCollections();
         pc.removeProductRecord(target);
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully deleted " + target.getProductBrand() + " " + target.getProductModel() + ".", ButtonType.OK);
-        alert.setTitle("Removed product successfully");
-        alert.setHeaderText("Successfully removed an item from inventory");
-        alert.showAndWait();
-        if(alert.getAlertType() == Alert.AlertType.CONFIRMATION) {
-            btnLoad(); //reload table
+
+        Alert deleteAlert = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to delete "+ target.getProductBrand() + " " + target.getProductModel() + " from inventory?", ButtonType.OK, ButtonType.CANCEL);
+        deleteAlert.setTitle("Deleting an item from inventory");
+        deleteAlert.setHeaderText("Are you sure you want to continue?");
+        deleteAlert.showAndWait();
+
+        if(deleteAlert.getResult() == ButtonType.OK) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully deleted " + target.getProductBrand() + " " + target.getProductModel() + ".", ButtonType.OK);
+            alert.setTitle("Removed product successfully");
+            alert.setHeaderText("Successfully removed an item from inventory");
+            alert.showAndWait();
+            if(alert.getAlertType() == Alert.AlertType.CONFIRMATION) {
+                btnLoad(); //reload table
+            }
         }
+
+        else{
+            deleteAlert.close();
+        }
+
+
         System.out.println(target.getProductBrand() + " " + target.getProductModel());
         System.out.println("Remove an item. Coming Soon.");
     }

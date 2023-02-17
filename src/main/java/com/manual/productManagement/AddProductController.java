@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -93,6 +94,9 @@ public class AddProductController {
             alert.showAndWait();
             e.printStackTrace();
         }
+
+        //constructing product and adding to collection
+        //binding attributes based on user input
         Product product = new Product(this.txtProductModel.getText(),
                 this.txtProductBrand.getText(),
                 this.txtProductDescription.getText(),
@@ -102,6 +106,15 @@ public class AddProductController {
                 Integer.parseInt(txtProductPopularity.getText())
                 );
         pc.addProductRecord(product);
+
+        //success message after inputting data
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully added a new item to inventory",ButtonType.OK);
+        alert.setTitle("Removed product successfully");
+        alert.setHeaderText("Successfully added a new item to inventory");
+        alert.showAndWait();
+        if(alert.getAlertType() == Alert.AlertType.CONFIRMATION) {
+            this.closeDialog();
+        }
     }
 
     @FXML
