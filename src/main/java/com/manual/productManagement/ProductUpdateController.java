@@ -1,6 +1,6 @@
 package com.manual.productManagement;
 
-import com.manual.collections.ProductCollections;
+import com.manual.model.ProductCollections;
 import com.manual.model.Product;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -19,13 +19,15 @@ import java.io.IOException;
 
 public class ProductUpdateController {
     @FXML
-    private TextField txtProductName;
+    private TextField txtProductID;
     @FXML
     private TextField txtProductModel;
+
     @FXML
     private TextArea txtProductDescription;
+
     @FXML
-    private TextField txtProductBrand;
+    protected TextField txtProductBrand;
     @FXML
     private TextField txtProductPrice;
     @FXML
@@ -34,6 +36,24 @@ public class ProductUpdateController {
     private TextField txtImagePath;
     @FXML
     private TextField txtProductPopularity;
+    private Product candidate;
+
+    public void initialize() {
+        txtProductID.setText(Integer.toString(candidate.getId()));
+        txtProductModel.setText(candidate.getProductModel());
+        txtProductDescription.setText(candidate.getProductDescription());
+        txtProductBrand.setText(candidate.getProductBrand());
+        txtProductStock.setText(Integer.toString(candidate.getQuantity()));
+        txtProductPopularity.setText(Integer.toString(candidate.getLikes()));
+        txtProductPrice.setText(Float.toString(candidate.getProductPrice()));
+        txtImagePath.setText(candidate.getImageFilePath());
+    }
+
+
+    public ProductUpdateController(Product candidate) {
+        this.candidate = candidate;
+    }
+
 
     @FXML
     public void fileBrowse() throws IOException {
@@ -58,7 +78,7 @@ public class ProductUpdateController {
     }
 
     @FXML
-    public void addItem() {
+    public void updateItem() {
         ProductCollections pc = new ProductCollections();
 
         //validations
@@ -95,18 +115,13 @@ public class ProductUpdateController {
             e.printStackTrace();
         }
 
-        //constructing product and adding to collection
-        //binding attributes based on user input
-        Product product = new Product(this.txtProductModel.getText(),
-                this.txtProductBrand.getText(),
-                this.txtProductDescription.getText(),
-                Float.parseFloat(this.txtProductPrice.getText()),
-                Integer.parseInt(this.txtProductStock.getText()),
-                this.txtImagePath.getText(),
-                Integer.parseInt(txtProductPopularity.getText())
-        );
-        //update product
-        pc.updateProductRecord(product);
+        //update date in product
+        this.candidate.setLikes(Integer.parseInt(txtProductPopularity.getText()));
+        Product p = new Product(txtProductModel.getText(), txtProductBrand.getText(),
+                txtProductDescription.getText(), Float.parseFloat(txtProductPrice.getText()),
+                Integer.parseInt(txtProductStock.getText()), txtImagePath.getText(), Integer.parseInt(txtProductPopularity.getText()));
+        //update product record
+        pc.updateProductRecord(p);
 
         //success message after inputting data
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully added a new item to inventory", ButtonType.OK);
@@ -120,6 +135,6 @@ public class ProductUpdateController {
 
     @FXML
     public void closeDialog() {
-        txtProductName.getScene().getWindow().hide();
+        txtProductID.getScene().getWindow().hide();
     }
 }

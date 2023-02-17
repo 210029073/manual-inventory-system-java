@@ -1,4 +1,4 @@
-package com.manual.collections;
+package com.manual.model;
 import com.manual.ManualDatabaseConnection;
 import com.manual.model.Product;
 
@@ -23,8 +23,8 @@ public class ProductCollections {
 
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO products(`model`, `brand`, `description`, `price`, `stock`, `image`, `likes`)" + "VALUE(?, ?, ?, ? ,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, product.getProductModel());
-            preparedStatement.setString(2, product.getProductDescription());
-            preparedStatement.setString(3, product.getProductBrand());
+            preparedStatement.setString(2, product.getProductBrand());
+            preparedStatement.setString(3, product.getProductDescription());
             preparedStatement.setFloat(4, product.getProductPrice());
             preparedStatement.setInt(5, product.getQuantity());
             preparedStatement.setString(6, product.getImageFilePath());
@@ -39,7 +39,26 @@ public class ProductCollections {
     }
 
     public void updateProductRecord(Product product) {
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+            PreparedStatement sql = connection.prepareStatement(
+                    "UPDATE products SET `brand` = ?, `model` = ?, `description` = ?, `price` = ?, `stock` = ?, `image` = ?, `likes` = ? WHERE `productsId` = ?"
+            );
+            sql.setString(1, product.getProductBrand());
+            sql.setString(2, product.getProductModel());
+            sql.setString(3, product.getProductDescription());
+            sql.setFloat(4, product.getProductPrice());
+            sql.setInt(5, product.getQuantity());
+            sql.setString(6, product.getImageFilePath());
+            sql.setInt(7, product.getLikes());
+            sql.setInt(8, product.getId());
+            sql.executeUpdate();
+            System.out.println("Successfully updated a record");
+        }
 
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void removeProductRecord(Product target) {
@@ -74,6 +93,8 @@ public class ProductCollections {
                         resultSet.getInt("likes")
                 );
 
+                product.setID(resultSet.getInt("productsID"));
+
                 products.add(product);
             }
 
@@ -84,6 +105,17 @@ public class ProductCollections {
         }
 
         return products;
+
+    }
+
+    public static void main(String[] args) {
+        Product p = new Product("330D", "BMW", "BMW E46 330D DIESEL 3.0 Litre V6 Engine", 1023.98F, 12, "na.img", 500);
+        ProductCollections productCollections = new ProductCollections();
+//        productCollections.addProductRecord(p);
+        String tmp = "2002 " + p.getProductDescription();
+        p.setImageFilePath(tmp);
+        productCollections.updateProductRecord(p);
+//        p.setProductPrice();
 
     }
 }

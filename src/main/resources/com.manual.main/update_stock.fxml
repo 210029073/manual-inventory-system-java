@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.manual.productManagement.ProductUpdateController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="90.0" spacing="15.0" style="-fx-background-color: grey;">
          <children>
@@ -26,12 +26,12 @@
          <children>
             <HBox layoutX="110.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
                <children>
-                  <Label text="Product Name:">
+                  <Label text="id">
                      <padding>
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <TextField fx:id="txtProductName" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <TextField fx:id="txtProductID" editable="false" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
@@ -138,7 +138,7 @@
                   <Insets left="50.0" right="50.0" />
                </padding>
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#addItem" prefWidth="75.0" text="OK">
+                  <Button mnemonicParsing="false" onMouseClicked="#updateItem" prefWidth="75.0" text="OK">
                      <padding>
                         <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                      </padding>

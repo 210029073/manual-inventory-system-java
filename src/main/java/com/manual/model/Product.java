@@ -41,6 +41,7 @@ public class Product {
         this.quantity = quantity;
         this.imageFilePath = new SimpleStringProperty(imageFilePath);
         this.likes = likes;
+        this.id = 0;
     }
 
     /**
@@ -85,6 +86,10 @@ public class Product {
 
     public String getProductDescription() {
         return productDescription.get();
+    }
+
+    protected void setID (int id) {
+        this.id = id;
     }
 
     public void setProductDescription(String productDescription) {

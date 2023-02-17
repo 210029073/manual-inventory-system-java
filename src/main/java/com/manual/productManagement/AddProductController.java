@@ -1,6 +1,6 @@
 package com.manual.productManagement;
 
-import com.manual.collections.ProductCollections;
+import com.manual.model.ProductCollections;
 import com.manual.model.Product;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
