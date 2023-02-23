@@ -1,5 +1,6 @@
 package com.manual.menu;
 
+import com.manual.dashboard.DashboardController;
 import com.manual.productManagement.AddProductController;
 import com.manual.productManagement.ProductListController;
 import javafx.fxml.FXML;
@@ -29,6 +30,7 @@ public class MenuController {
             Parent parent = loader.load();
 
             loader.setRoot(parent);
+            loader.setController(new DashboardController());
 
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Dashboard");

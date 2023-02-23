@@ -22,24 +22,24 @@
       </VBox>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="462.0" spacing="20.0" HBox.hgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
+            <VBox fx:id="btnStockLevelContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pending Orders">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Text fx:id="txtPendingOrderMsg" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="210.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Text fx:id="txtQuantityPendingOrder" layoutX="210.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" text="Take Action" />
+                  <Button fx:id="btnProcessOrder" mnemonicParsing="false" prefHeight="40.0" text="Process Orders" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -52,17 +52,17 @@
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text layoutX="140.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Text fx:id="txtOrdersApprovedMsg" layoutX="140.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="209.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Text fx:id="txtOrdersApprovedQuantity" layoutX="209.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" prefHeight="40.0" text="View Past Orders" />
+                  <Button fx:id="btnViewPastOrders" mnemonicParsing="false" prefHeight="40.0" text="View Past Orders" />
                </children>
             </VBox>
          </children>
@@ -72,24 +72,24 @@
       </VBox>
       <VBox layoutX="110.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="462.0" spacing="20.0" HBox.hgrow="ALWAYS">
          <children>
-            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
+            <VBox fx:id="stockLevelContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Stock Levels">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Text>
-                  <Text layoutX="116.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Text fx:id="txtStockLevelMsg" layoutX="116.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="209.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Text fx:id="txtStockLevelQuantity" layoutX="209.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button mnemonicParsing="false" prefHeight="40.0" text="Update Stock" />
+                  <Button fx:id="btnUpdateStock" mnemonicParsing="false" prefHeight="40.0" text="Update Stock" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -107,7 +107,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Text layoutX="151.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                  <Text fx:id="txtTotalStocks" layoutX="151.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <font>
                         <Font size="14.0" />
                      </font>
