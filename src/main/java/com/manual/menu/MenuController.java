@@ -30,7 +30,8 @@ public class MenuController {
             Parent parent = loader.load();
 
             loader.setRoot(parent);
-            loader.setController(new DashboardController());
+            final DashboardController dashboardController = new DashboardController();
+            loader.setController(dashboardController);
 
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Dashboard");

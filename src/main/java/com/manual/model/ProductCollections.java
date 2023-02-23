@@ -106,14 +106,17 @@ public class ProductCollections {
 
     }
 
-    public int productAmount() {
-        int quantity = 0;
+    public List<Product> insufficientStocks() {
+
+        ArrayList<Product> lowStockQuanity = new ArrayList<>();
 
         for(Product p : getProducts()) {
-            quantity += 1;
+            if(p.getQuantity() < 10) {
+                lowStockQuanity.add(p);
+            }
         }
 
-        return quantity;
+        return lowStockQuanity;
     }
 
     public int totalStockInInventory() {
