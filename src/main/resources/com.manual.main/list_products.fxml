@@ -8,25 +8,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="90.0" spacing="15.0" style="-fx-background-color: grey;">
+      <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="90.0" spacing="15.0" style="-fx-background-color: grey;">
          <children>
             <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnLoad" prefHeight="75.0" prefWidth="67.0" text="Refresh" />
             <Button layoutX="15.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnRemove" prefHeight="75.0" prefWidth="67.0" text="Remove" />
             <Button layoutX="15.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnUpdate" prefHeight="75.0" prefWidth="67.0" text="Update Stock" textAlignment="CENTER" wrapText="true" />
-            <Button layoutX="15.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
+            <Button layoutX="15.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" text="About" />
             <Button layoutX="15.0" layoutY="204.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnClose" prefHeight="75.0" prefWidth="67.0" text="Exit" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="934.0">
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="934.0" HBox.hgrow="ALWAYS">
          <children>
-            <HBox alignment="CENTER" layoutX="110.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="512.0" prefWidth="914.0">
+            <HBox alignment="CENTER" layoutX="110.0" layoutY="85.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="512.0" prefWidth="914.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tblProduct" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0">
+                  <TableView fx:id="tblProduct" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="colBrand" editable="false" minWidth="-Infinity" prefWidth="100.0" text="Brand" />
                       <TableColumn fx:id="colModel" editable="false" prefWidth="100.0" text="Model" />
@@ -39,7 +39,7 @@
                   </TableView>
                </children>
             </HBox>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="914.0">
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="914.0">
                <children>
                   <ImageView accessibleText="Car Image" fitHeight="300.0" fitWidth="914.0" pickOnBounds="true" />
                </children>

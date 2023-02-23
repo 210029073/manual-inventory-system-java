@@ -100,7 +100,7 @@ public class MenuController {
             loader.setRoot(parent);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("View list of products");
-            stage.setResizable(false);
+            stage.setResizable(true);
 
             Scene scene = new Scene(parent);
             stage.setScene(scene);

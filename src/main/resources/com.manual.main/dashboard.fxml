@@ -1,84 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <VBox prefHeight="768.0" prefWidth="66.0" spacing="15.0" style="-fx-background-color: grey;">
+      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: grey;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="58.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="78.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="141.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="204.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="67.0" />
+            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Refresh" />
+            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Main Menu" textAlignment="CENTER" wrapText="true" />
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Past Orders" textAlignment="CENTER" wrapText="true" />
+            <Button layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Trending Stocks" textAlignment="CENTER" wrapText="true" />
+            <Button layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="About" />
+            <Button layoutX="20.0" layoutY="534.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Exit" />
          </children>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
       </VBox>
-      <HBox layoutX="66.0" prefHeight="389.0" prefWidth="960.0" style="-fx-background-color: #606060;">
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="462.0" spacing="20.0" HBox.hgrow="ALWAYS">
          <children>
-            <VBox prefHeight="300.0" prefWidth="960.0">
+            <VBox fx:id="btnStockLevelContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="970.0" text="Dashboard" textAlignment="CENTER" textFill="WHITE">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pending Orders">
                      <font>
-                        <Font name="Arial Bold" size="36.0" />
+                        <Font size="20.0" />
                      </font>
-                  </Label>
-                  <HBox prefHeight="347.0" prefWidth="960.0">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="400.0" spacing="10.0">
-                           <children>
-                              <Label text="Label" />
-                              <LineChart>
-                                <xAxis>
-                                  <CategoryAxis side="BOTTOM" />
-                                </xAxis>
-                                <yAxis>
-                                  <NumberAxis side="LEFT" />
-                                </yAxis>
-                              </LineChart>
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="400.0" spacing="10.0">
-                           <children>
-                              <Label text="Label" />
-                              <PieChart />
-                           </children>
-                           <padding>
-                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                           </padding>
-                        </VBox>
-                     </children>
-                  </HBox>
+                  </Text>
+                  <Text fx:id="txtPendingOrderMsg" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtQuantityPendingOrder" layoutX="210.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btnProcessOrder" mnemonicParsing="false" prefHeight="40.0" text="Process Orders" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Orders Approved">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtOrdersApprovedMsg" layoutX="140.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtOrdersApprovedQuantity" layoutX="209.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btnViewPastOrders" mnemonicParsing="false" prefHeight="40.0" text="View Past Orders" />
                </children>
             </VBox>
          </children>
-      </HBox>
-      <HBox layoutX="66.0" layoutY="389.0" prefHeight="379.0" prefWidth="958.0" spacing="5.0" style="-fx-background-color: #707070;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="389.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <VBox layoutX="110.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="462.0" spacing="20.0" HBox.hgrow="ALWAYS">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d9da" height="300.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d9da" height="300.0" layoutX="10.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d8d9da" height="300.0" layoutX="352.0" layoutY="10.0" stroke="BLACK" strokeType="INSIDE" width="310.0" />
+            <VBox fx:id="stockLevelContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Stock Levels">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtStockLevelMsg" layoutX="116.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtStockLevelQuantity" layoutX="209.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="btnUpdateStock" mnemonicParsing="false" prefHeight="40.0" text="Update Stock" />
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="TOP_CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Stocks Available">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="There is approximately">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtTotalStocks" layoutX="151.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="217.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Stocks in Inventory">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
          </children>
          <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="30.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
-      </HBox>
+      </VBox>
    </children>
-</AnchorPane>
+</HBox>
