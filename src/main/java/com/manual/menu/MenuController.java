@@ -1,6 +1,7 @@
 package com.manual.menu;
 
 import com.manual.dashboard.DashboardController;
+import com.manual.orders.OrdersController;
 import com.manual.productManagement.AddProductController;
 import com.manual.productManagement.ProductListController;
 import javafx.fxml.FXML;
@@ -111,6 +112,29 @@ public class MenuController {
         }
 
         catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void btnManageOrders(){
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/orders.fxml"));
+        final OrdersController oc = new OrdersController();
+        try {
+            Stage stage = new Stage();
+            loader.setController(oc);
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Manage Orders");
+            stage.setResizable(true);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e){
             e.printStackTrace();
         }
     }
