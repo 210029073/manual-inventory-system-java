@@ -58,7 +58,6 @@ public class OrdersController {
 
         colDevliveryDate.setCellValueFactory(new PropertyValueFactory<>(""));
 
-
         tblOrders.setItems(ord);
     }
 
