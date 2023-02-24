@@ -81,6 +81,13 @@ public class DashboardController {
             this.stockLevelContainer.setStyle("-fx-background-color: red; -fx-border-radius: 25%");
 
         }
+
+        else {
+            this.txtStockLevelMsg.setText("Stock levels are sufficient.");
+            this.txtStockLevelQuantity.setText("");
+            this.lblStockTest.setVisible(false);
+            this.stockLevelContainer.setStyle("-fx-background-color: limegreen; -fx-border-radius: 25%");
+        }
     }
 
     @FXML
