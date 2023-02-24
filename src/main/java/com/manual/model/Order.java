@@ -76,6 +76,11 @@ public class Order {
         ProductCollections pc = new ProductCollections();
         return pc.showProduct(productId);
     }
+
+    public IntegerProperty userIdProperty() {
+        return this.userId;
+    }
+
     /**
      * @author Victory Mpokosa
      * @return Unique product x which is associated with the current order which
