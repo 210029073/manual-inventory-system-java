@@ -1,7 +1,9 @@
 package com.manual.model;
 
 import javafx.beans.property.FloatProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 
 
 import java.util.Date;
@@ -14,9 +16,9 @@ import java.util.Date;
 public class Order {
     private int id;
 
-    private int userId;
+    private IntegerProperty userId;
 
-    private int productId;
+    private IntegerProperty productId;
 
     private FloatProperty price;
 
@@ -36,17 +38,19 @@ public class Order {
         this.orderDate = new Date(String.valueOf(orderDate));
         this.price = new SimpleFloatProperty(price);
         this.id = id;
-        this.userId = userId;
-        this.productId = productId;
+        this.userId = new SimpleIntegerProperty(userId);
+        this.productId = new SimpleIntegerProperty(userId);
     }
 
     public Date getDeliveryDate() { return deliveryDate; }
 
     public int getId() { return id; }
 
-    public int getProductId() { return productId; }
+    public Integer getProductId() { return productId.getValue(); }
 
-    public int getUserId() { return userId;}
+
+
+    public Integer getUserId() { return userId.getValue();}
 
     public Date getOrderDate() { return orderDate; }
 
@@ -58,9 +62,9 @@ public class Order {
 
     public void setId(int id) { this.id = id; }
 
-    public void setProductId(int productId) { this.productId = productId; }
+    public void setProductId(int productId) { this.productId.set(productId); }
 
-    public void setUserId(int userId) { this.userId = userId; }
+    public void setUserId(int userId) { this.userId.set(userId); }
 
     public void setPrice(float price) { this.price.set(price); }
     /**
@@ -78,6 +82,6 @@ public class Order {
      *         has been searched for in the products table
      * */
     public Product getProductID(){
-        return  new ProductCollections().showProduct(productId);
+        return  new ProductCollections().showProduct(productId.get());
     }
 }
