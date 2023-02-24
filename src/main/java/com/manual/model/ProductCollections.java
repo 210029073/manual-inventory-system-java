@@ -9,6 +9,8 @@ import java.util.List;
 public class ProductCollections {
     private List<Product> products;
 
+    private Product productShow;
+
     public ProductCollections(List<Product> productList) {
         this.products = productList;
     }
@@ -90,20 +92,14 @@ public class ProductCollections {
                         resultSet.getString("image"),
                         resultSet.getInt("likes")
                 );
-
                 product.setID(resultSet.getInt("productsID"));
-
                 products.add(product);
             }
-
         }
-
         catch (SQLException e) {
             System.err.println("Failed to add a record: " + e.getMessage());
         }
-
         return products;
-
     }
 
     public List<Product> insufficientStocks() {
@@ -127,4 +123,26 @@ public class ProductCollections {
 
         return total;
     }
+/**
+ * @author Victory Mpokosa
+ * @param productId
+ * @return Unique product x which has been searched for in the products table*/
+    public Product showProduct(int productId) {
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM products WHERE productId ="+productId);
+            ResultSet resultSet = pstmt.executeQuery();
+            return new Product(
+                    resultSet.getString("model"),
+                    resultSet.getString("brand"),
+                    resultSet.getString("description"),
+                    resultSet.getFloat("price"),
+                    resultSet.getInt("stock"),
+                    resultSet.getString("image"),
+                    resultSet.getInt("likes")
+            );
+        } catch (SQLException e) {
+            System.err.println("Product doesnt exist "+ e);
+        }
+    return productShow;}
 }
