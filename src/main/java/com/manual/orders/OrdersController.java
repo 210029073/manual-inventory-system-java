@@ -58,7 +58,7 @@ public class OrdersController {
         ObservableList<Order> ord = FXCollections.observableArrayList(orders);
 
         colDevliveryDate.setCellValueFactory(cell -> (ObservableValue<Date>) cell.getValue().getDeliveryDate());
-        colStatus.setCellValueFactory(cell -> cell.getValue().);
+        colStatus.setCellValueFactory(cell -> (ObservableValue<String>) cell.getValue());
 
         tblOrders.setItems(ord);
     }
