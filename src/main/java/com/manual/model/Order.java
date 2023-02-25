@@ -2,6 +2,7 @@ package com.manual.model;
 
 import javafx.beans.property.FloatProperty;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 
@@ -26,6 +27,8 @@ public class Order {
 
     private Date orderDate;
 
+    private BooleanProperty status;
+
     public Order(
             int id,
             int userId,
@@ -40,6 +43,7 @@ public class Order {
         this.id = id;
         this.userId = new SimpleIntegerProperty(userId);
         this.productId = new SimpleIntegerProperty(userId);
+        this.status = null;
     }
 
     public Date getDeliveryDate() { return deliveryDate; }
@@ -54,7 +58,9 @@ public class Order {
 
     public Date getOrderDate() { return orderDate; }
 
-    public FloatProperty priceProperty() { return price; }
+    public BooleanProperty getStatus() {return this.status;}
+
+    public void setStatus(BooleanProperty status) {this.status = status; }
 
     public void setDeliveryDate(Date deliveryDate) { this.deliveryDate = deliveryDate; }
 
@@ -67,6 +73,20 @@ public class Order {
     public void setUserId(int userId) { this.userId.set(userId); }
 
     public void setPrice(float price) { this.price.set(price); }
+
+    public FloatProperty getPriceProperty() {
+        return price;
+    }
+
+    /**
+     * @author Victory Mpokosa
+     * @return Unique product x which is associated with the current order which
+     *         has been searched for in the products table
+     * */
+    public Product getProductID(){
+        return  new ProductCollections().showProduct(productId.get());
+    }
+
     /**
      * @author Victory Mpokosa
      * @param productId
@@ -77,16 +97,11 @@ public class Order {
         return pc.showProduct(productId);
     }
 
-    public IntegerProperty userIdProperty() {
+    public IntegerProperty getUserIdProperty() {
         return this.userId;
     }
 
-    /**
-     * @author Victory Mpokosa
-     * @return Unique product x which is associated with the current order which
-     *         has been searched for in the products table
-     * */
-    public Product getProductID(){
-        return  new ProductCollections().showProduct(productId.get());
+    public IntegerProperty getProductIdProperty() {
+        return this.productId;
     }
 }

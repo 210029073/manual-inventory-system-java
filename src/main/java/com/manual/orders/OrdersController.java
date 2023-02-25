@@ -4,6 +4,7 @@ import com.manual.model.OrderCollections;
 import com.manual.model.ProductCollections;
 import com.manual.model.Product;
 import com.manual.model.Order;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -56,7 +57,8 @@ public class OrdersController {
         ArrayList<Order> orders = new ArrayList<>(oc.getOrders());
         ObservableList<Order> ord = FXCollections.observableArrayList(orders);
 
-        colDevliveryDate.setCellValueFactory(new PropertyValueFactory<>(""));
+        colDevliveryDate.setCellValueFactory(cell -> (ObservableValue<Date>) cell.getValue().getDeliveryDate());
+        colStatus.setCellValueFactory(cell -> cell.getValue().);
 
         tblOrders.setItems(ord);
     }

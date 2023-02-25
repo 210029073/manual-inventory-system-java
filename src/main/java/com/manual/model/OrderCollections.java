@@ -5,6 +5,8 @@ import com.manual.model.Order;
 import com.manual.orders.OrdersController;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 public class OrderCollections {
@@ -38,5 +40,10 @@ public class OrderCollections {
             System.err.println("Failed to get Orders: " + e.getMessage());
         }
         return orders;
+    }
+    public Boolean status(Order od){
+        SimpleDateFormat formatter= new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
+        Date date = new Date(System.currentTimeMillis());
+        return od.getDeliveryDate().equals(date);
     }
 }
