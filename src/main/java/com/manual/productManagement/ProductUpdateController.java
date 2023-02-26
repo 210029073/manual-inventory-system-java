@@ -36,6 +36,11 @@ public class ProductUpdateController {
     private TextField txtImagePath;
     @FXML
     private TextField txtProductPopularity;
+    @FXML
+    private TextField txtEngineCapacity;
+    @FXML
+    private TextField txtTransmission;
+
     private Product candidate;
 
     public void initialize() {
@@ -46,6 +51,8 @@ public class ProductUpdateController {
         txtProductStock.setText(Integer.toString(candidate.getQuantity()));
         txtProductPopularity.setText(Integer.toString(candidate.getLikes()));
         txtProductPrice.setText(Float.toString(candidate.getProductPrice()));
+        txtEngineCapacity.setText(Float.toString(candidate.getEngineCapacity()));
+        txtTransmission.setText(candidate.getTransmission());
         txtImagePath.setText(candidate.getImageFilePath());
     }
 
@@ -119,6 +126,7 @@ public class ProductUpdateController {
         this.candidate.setLikes(Integer.parseInt(txtProductPopularity.getText()));
         Product p = new Product(txtProductModel.getText(), txtProductBrand.getText(),
                 txtProductDescription.getText(), Float.parseFloat(txtProductPrice.getText()),
+                Float.parseFloat(txtEngineCapacity.getText()), txtTransmission.getText(),
                 Integer.parseInt(txtProductStock.getText()), txtImagePath.getText(), Integer.parseInt(txtProductPopularity.getText()));
         p.setID(candidate.getId());
         //update product record

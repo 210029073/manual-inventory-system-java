@@ -105,6 +105,8 @@ public class AddProductController {
                 this.txtProductBrand.getText(),
                 this.txtProductDescription.getText(),
                 Float.parseFloat(this.txtProductPrice.getText()),
+                Float.parseFloat(this.txtEngineCapacity.getText()),
+                this.txtTransmission.getText(),
                 Integer.parseInt(this.txtProductStock.getText()),
                 this.txtImagePath.getText(),
                 Integer.parseInt(txtProductPopularity.getText())

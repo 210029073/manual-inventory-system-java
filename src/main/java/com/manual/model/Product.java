@@ -18,6 +18,8 @@ public class Product {
     private StringProperty productBrand;
     private StringProperty productDescription;
     private FloatProperty productPrice;
+    private StringProperty productTransmission;
+    private FloatProperty productEngineCapacity;
     private Integer quantity;
     private StringProperty imageFilePath;
     private int likes;
@@ -30,6 +32,8 @@ public class Product {
             String productBrand,
             String productDescription,
             float productPrice,
+            float engineCapacity,
+            String transmission,
             Integer quantity,
             String imageFilePath,
             int likes) {
@@ -38,6 +42,8 @@ public class Product {
         this.productBrand = new SimpleStringProperty(productBrand);
         this.productDescription = new SimpleStringProperty(productDescription);
         this.productPrice = new SimpleFloatProperty(productPrice);
+        this.productEngineCapacity = new SimpleFloatProperty(engineCapacity);
+        this.productTransmission = new SimpleStringProperty(transmission);
         this.quantity = quantity;
         this.imageFilePath = new SimpleStringProperty(imageFilePath);
         this.likes = likes;
@@ -54,6 +60,8 @@ public class Product {
                 null,
                 null,
                 0.0F,
+                0.0F,
+                null,
                 0,
                 null,
                 0
@@ -140,5 +148,29 @@ public class Product {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public StringProperty transmissionProperty() {
+        return this.productTransmission;
+    }
+
+    public String getTransmission() {
+        return this.productTransmission.get();
+    }
+
+    public void setTransmission(String transmission) {
+        this.productTransmission.set(transmission);
+    }
+
+    public FloatProperty engineCapacityProperty() {
+        return this.productEngineCapacity;
+    }
+
+    public void setProductEngineCapacity(float newCapacity) {
+        this.productEngineCapacity.set(newCapacity);
+    }
+
+    public Float getEngineCapacity() {
+        return this.productEngineCapacity.get();
     }
 }

@@ -23,14 +23,16 @@ public class ProductCollections {
         try {
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();
 
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO products(`model`, `brand`, `description`, `price`, `stock`, `image`, `likes`)" + "VALUE(?, ?, ?, ? ,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO products(`model`, `brand`, `description`, `price`,`engine_capacity`,`transmission`, `stock`, `image`, `likes`)" + "VALUE(?,?,?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, product.getProductModel());
             preparedStatement.setString(2, product.getProductBrand());
             preparedStatement.setString(3, product.getProductDescription());
             preparedStatement.setFloat(4, product.getProductPrice());
-            preparedStatement.setInt(5, product.getQuantity());
-            preparedStatement.setString(6, product.getImageFilePath());
-            preparedStatement.setInt(7,product.getLikes());
+            preparedStatement.setFloat(5, product.getEngineCapacity());
+            preparedStatement.setString(6, product.getTransmission());
+            preparedStatement.setInt(7, product.getQuantity());
+            preparedStatement.setString(8, product.getImageFilePath());
+            preparedStatement.setInt(9,product.getLikes());
             preparedStatement.executeUpdate();
             System.out.println("Successfully executed SQL Statement");
         }
@@ -43,7 +45,7 @@ public class ProductCollections {
     public void updateProductRecord(Product product) {
         try {
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();
-            PreparedStatement sql = connection.prepareStatement("UPDATE products SET `stock` = ?, `model` = ?, `brand` = ?, `description` = ?, `price` = ?, `likes` = ?, `image` = ? WHERE `productsId` = ?");
+            PreparedStatement sql = connection.prepareStatement("UPDATE products SET `stock` = ?, `model` = ?, `brand` = ?, `description` = ?, `price` = ?, `likes` = ?, `image` = ?, `engine_capacity` = ?,`transmission` = ? WHERE `productsId` = ?");
             sql.setInt(1, product.getQuantity());
             sql.setString(2, product.getProductModel());
             sql.setString(3, product.getProductBrand());
@@ -51,7 +53,9 @@ public class ProductCollections {
             sql.setFloat(5, product.getProductPrice());
             sql.setInt(6, product.getLikes());
             sql.setString(7, product.getImageFilePath());
-            sql.setInt(8, product.getId());
+            sql.setFloat(8, product.getEngineCapacity());
+            sql.setString(9, product.getTransmission());
+            sql.setInt(10, product.getId());
             sql.executeUpdate();
             System.out.println("Successfully updated a record");
         }
@@ -88,6 +92,8 @@ public class ProductCollections {
                         resultSet.getString("brand"),
                         resultSet.getString("description"),
                         resultSet.getFloat("price"),
+                        resultSet.getFloat("engine_capacity"),
+                        resultSet.getString("transmission"),
                         resultSet.getInt("stock"),
                         resultSet.getString("image"),
                         resultSet.getInt("likes")
@@ -137,6 +143,8 @@ public class ProductCollections {
                     resultSet.getString("brand"),
                     resultSet.getString("description"),
                     resultSet.getFloat("price"),
+                    resultSet.getFloat("engine_capacity"),
+                    resultSet.getString("transmission"),
                     resultSet.getInt("stock"),
                     resultSet.getString("image"),
                     resultSet.getInt("likes")
