@@ -10,12 +10,19 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * List all items that are within inventory and carries out operation within two-dimensional
+ * table.
+ * @author Ibrahim Ahmad <210029073@aston.ac.uk>
+ * @version 1.2
+ * */
 public class ProductListController {
     @FXML
     private TableView<Product> tblProduct;
@@ -41,6 +48,15 @@ public class ProductListController {
     @FXML
     private TableColumn<Product, String> colLikes;
 
+    @FXML
+    private ImageView image;
+
+    @FXML
+    private TableColumn<Product, Float> colEngineSize;
+
+    @FXML
+    private TableColumn<Product, String> colTransmission;
+
     public void initialize() {
         btnLoad();
     }
@@ -59,10 +75,11 @@ public class ProductListController {
         colModel.setCellValueFactory(cell -> cell.getValue().modelProperty());
         colDesc.setCellValueFactory(cell -> cell.getValue().productDescProperty());
         colPrice.setCellValueFactory(cell -> cell.getValue().productPriceProperty().asObject());
+        colEngineSize.setCellValueFactory(cell -> cell.getValue().engineCapacityProperty().asObject());
+        colTransmission.setCellValueFactory(cell -> cell.getValue().transmissionProperty());
         colStockLevel.setCellValueFactory(cell -> cell.getValue().quantityProperty().asObject());
         colImagePath.setCellValueFactory(cell -> cell.getValue().imageFilePathProperty());
         colLikes.setCellValueFactory(new PropertyValueFactory<>("Likes"));
-
 
         tblProduct.setItems(prd);
     }
