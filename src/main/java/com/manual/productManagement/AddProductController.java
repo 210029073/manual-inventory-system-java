@@ -19,7 +19,11 @@ import java.io.IOException;
 
 public class AddProductController {
     @FXML
-    private TextField txtProductName;
+    private TextField txtEngineCapacity;
+
+    @FXML
+    private TextField txtTransmission;
+
     @FXML
     private TextField txtProductModel;
     @FXML
@@ -119,6 +123,6 @@ public class AddProductController {
 
     @FXML
     public void closeDialog() {
-        txtProductName.getScene().getWindow().hide();
+        txtTransmission.getScene().getWindow().hide();
     }
 }
