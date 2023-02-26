@@ -26,7 +26,7 @@
          <children>
             <HBox alignment="CENTER" layoutX="110.0" layoutY="85.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="512.0" prefWidth="914.0" VBox.vgrow="ALWAYS">
                <children>
-                  <TableView fx:id="tblProduct" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
+                  <TableView fx:id="tblProduct" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#changeImage" prefHeight="200.0" prefWidth="1000.0" HBox.hgrow="ALWAYS">
                     <columns>
                       <TableColumn fx:id="colBrand" editable="false" minWidth="-Infinity" prefWidth="100.0" text="Brand" />
                       <TableColumn fx:id="colModel" editable="false" prefWidth="100.0" text="Model" />

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -57,8 +58,9 @@ public class ProductListController {
     @FXML
     private TableColumn<Product, String> colTransmission;
 
-    public void initialize() {
+    public void initialize() throws IOException {
         btnLoad();
+        image.setAccessibleText("Please select an image");
     }
 
     @FXML
@@ -123,6 +125,21 @@ public class ProductListController {
 
 
 //        System.out.println(target.getProductBrand() + " " + target.getProductModel());
+    }
+
+    @FXML
+    /**
+     * This should change the image of the product that the user
+     * selects
+     * @author Ibrahim Ahmad <210029073@aston.ac.uk>
+     * @date 26/02/2023
+     * */
+    public void changeImage() {
+        Product p = tblProduct.getSelectionModel().getSelectedItem();
+        Image image1 = new Image(getClass().getResource("/com.manual.main/cars/"+p.getImageFilePath()).toString());
+        image.setImage(image1);
+        image.setPreserveRatio(true);
+        image.setAccessibleText(p.getProductBrand() +" " + p.getProductModel());
     }
 
     @FXML
