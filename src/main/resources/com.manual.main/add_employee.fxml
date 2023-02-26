@@ -24,19 +24,6 @@
       </VBox>
       <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="934.0">
          <children>
-            <HBox layoutX="110.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
-               <children>
-                  <Label text="Product Name:">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtProductName" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
-               </children>
-               <padding>
-                  <Insets left="50.0" right="50.0" top="25.0" />
-               </padding>
-            </HBox>
             <HBox layoutX="130.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
                <children>
                   <Label text="Product Model">
@@ -84,6 +71,32 @@
                      </padding>
                   </Label>
                   <TextField fx:id="txtProductPrice" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="110.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+               <children>
+                  <Label text="Engine Capacity">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtEngineCapacity" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="25.0" />
+               </padding>
+            </HBox>
+            <HBox layoutX="110.0" layoutY="367.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+               <children>
+                  <Label text="Transmission Type">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <TextField fx:id="txtTransmission" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
