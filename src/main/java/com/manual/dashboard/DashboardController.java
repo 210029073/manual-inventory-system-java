@@ -1,6 +1,7 @@
 package com.manual.dashboard;
 
 import com.manual.ManualDatabaseConnection;
+import com.manual.model.OrderCollections;
 import com.manual.model.Product;
 import com.manual.model.ProductCollections;
 import com.manual.productManagement.ProductListController;
@@ -79,6 +80,13 @@ public class DashboardController {
             this.txtStockLevelQuantity.setText(lowStocks);
             this.lblStockTest.setVisible(false);
             this.stockLevelContainer.setStyle("-fx-background-color: red; -fx-border-radius: 25%");
+
+            OrderCollections oc = new OrderCollections();
+            System.out.println(oc.getPendingOrders());
+            if(oc.getPendingOrders().size() > 0) {
+                this.txtPendingOrderMsg.setText("There is pending orders awaiting");
+                this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");
+            }
 
         }
 

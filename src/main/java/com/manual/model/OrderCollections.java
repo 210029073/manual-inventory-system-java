@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 public class OrderCollections {
 
     private List<Order> orders;
@@ -43,6 +45,35 @@ public class OrderCollections {
         }
         return orders;
     }
+
+    public List<Order> getPendingOrders() {
+        List<Order> pendingOrders = new ArrayList<>();
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+            ResultSet sql = connection.createStatement().executeQuery("SELECT * FROM orders WHERE isProcessed = false");
+            while(sql.next()) {
+                Order order = new Order(
+                        sql.getInt("ordersId"),
+                        sql.getInt("userId"),
+                        sql.getInt("productsId"),
+                        sql.getFloat("price"),
+                        sql.getDate("deliveryDate"),
+                        sql.getDate("orderDate"),
+                        sql.getBoolean("isProcessed")
+                );
+
+                pendingOrders.add(order);
+            }
+        }
+
+        catch (SQLException e) {
+            System.err.println("Failed to get orders.");
+            e.printStackTrace();
+        }
+
+        return pendingOrders;
+    }
+
     public Boolean status(Order od){
         SimpleDateFormat formatter= new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
         Date date = new Date(System.currentTimeMillis());
