@@ -125,7 +125,7 @@
                   <Label fx:id="orderDetail" layoutX="11.0" layoutY="244.0" prefHeight="162.0" prefWidth="200.0" />
                   <ImageView fx:id="detailImg" fitHeight="150.0" fitWidth="200.0" layoutX="11.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@Manual-yellow-background.png" />
+                        <Image url="@car.jpg" />
                      </image></ImageView>
                   <Button layoutX="15.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnDelivered" text="Delivered" />
                   <Button layoutX="145.0" layoutY="406.0" mnemonicParsing="false" text="Button" />
