@@ -42,6 +42,7 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -107,7 +108,7 @@
         </AnchorPane>
             <AnchorPane>
                <children>
-                  <TableView fx:id="tblOrders" layoutX="14.0" layoutY="14.0" prefHeight="527.0" prefWidth="414.0">
+                  <TableView fx:id="tblOrders" layoutX="14.0" layoutY="14.0" onMouseClicked="#detailView" prefHeight="527.0" prefWidth="414.0">
                     <columns>
                       <TableColumn fx:id="colUserID" prefWidth="75.0" text="User ID" />
                       <TableColumn fx:id="colProductID" prefWidth="75.0" text="Product ID" />
@@ -122,7 +123,10 @@
           <children>
             <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
                   <Label fx:id="orderDetail" layoutX="11.0" layoutY="244.0" prefHeight="162.0" prefWidth="200.0" />
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="11.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="detailImg" fitHeight="150.0" fitWidth="200.0" layoutX="11.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Manual-yellow-background.png" />
+                     </image></ImageView>
                   <Button layoutX="15.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnDelivered" text="Delivered" />
                   <Button layoutX="145.0" layoutY="406.0" mnemonicParsing="false" text="Button" />
           </children>

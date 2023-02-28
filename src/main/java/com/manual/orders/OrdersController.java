@@ -13,10 +13,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -45,8 +48,8 @@ public class OrdersController {
     @FXML
     private TableColumn<Order, Integer> colStock;
 
-    // @FXML
-    // private ImageView orderImg;
+    @FXML
+    private ImageView detailImg;
 
     @FXML
     private Label orderDetail;
@@ -72,7 +75,18 @@ public class OrdersController {
         colUserID.setCellValueFactory(cell -> cell.getValue().getUserIdProperty().asObject());
 
         tblOrders.setItems(ord);
+        detailImg = new ImageView();
 
     }
 
+    @FXML
+    public void detailView(MouseEvent event) {
+        if(event.getClickCount() == 2) {
+            System.out.println("1");
+            Image image = new Image("/com.manual.main/audi.jpg");
+            System.out.println(image);
+            detailImg.setImage(image);
+            System.out.println(detailImg.getImage());
+        }
+    }
 }
