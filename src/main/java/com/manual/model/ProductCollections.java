@@ -136,20 +136,22 @@ public class ProductCollections {
     public Product showProduct(int productId) {
         try {
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();
-            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM products WHERE productId ="+productId);
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM products WHERE productsId ="+productId);
             ResultSet resultSet = pstmt.executeQuery();
-            return new Product(
-                    resultSet.getString("model"),
-                    resultSet.getString("brand"),
-                    resultSet.getString("description"),
-                    resultSet.getFloat("price"),
-                    resultSet.getFloat("engine_capacity"),
-                    resultSet.getString("transmission"),
-                    resultSet.getInt("stock"),
-                    resultSet.getString("image"),
-                    resultSet.getInt("likes")
-            );
-        } catch (SQLException e) {
+            if (resultSet.next()){
+                return new Product(
+                        resultSet.getString("model"),
+                        resultSet.getString("brand"),
+                        resultSet.getString("description"),
+                        resultSet.getFloat("price"),
+                        resultSet.getFloat("engine_capacity"),
+                        resultSet.getString("transmission"),
+                        resultSet.getInt("stock"),
+                        resultSet.getString("image"),
+                        resultSet.getInt("likes")
+                );
+            }
+            } catch (SQLException e) {
             System.err.println("Product doesnt exist "+ e);
         }
     return productShow;}

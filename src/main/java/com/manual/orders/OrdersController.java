@@ -37,13 +37,13 @@ public class OrdersController {
     private TableColumn<Order, Integer> colProductID;
 
     @FXML
-    private TableColumn<Order, Date> colDevliveryDate;
+    private TableColumn<Order, String> colDeliveryDate;
 
     @FXML
-    private TableColumn<Order, String> colStatus;
+    private TableColumn<Order, Boolean> colStatus;
 
     @FXML
-    private TableColumn<Order, String> colStock;
+    private TableColumn<Order, Integer> colStock;
 
     // @FXML
     // private ImageView orderImg;
@@ -51,20 +51,27 @@ public class OrdersController {
     @FXML
     private Label orderDetail;
 
-    public void initalize() {
-
-        OrderCollections oc = new OrderCollections();
-        ArrayList<Order> orders = new ArrayList<>(oc.getOrders());
-        ObservableList<Order> ord = FXCollections.observableArrayList(orders);
-
-        colDevliveryDate.setCellValueFactory(cell -> (ObservableValue<Date>) cell.getValue().getDeliveryDate());
-        colStatus.setCellValueFactory(cell -> (ObservableValue<String>) cell.getValue());
-
-        tblOrders.setItems(ord);
+    public void initialize() {
+        load();
     }
 
     @FXML
     public void btnDelivered() {
+
+    }
+
+    public void load() {
+        OrderCollections oc = new OrderCollections();
+        ArrayList<Order> orders = new ArrayList<>(oc.getOrders());
+        ObservableList<Order> ord = FXCollections.observableArrayList(orders);
+        System.out.println(oc.getOrders());
+        // colDeliveryDate.setCellValueFactory(cell -> cell.getValue().getDeliveryDate());
+        colStatus.setCellValueFactory(cell -> cell.getValue().getStatus());
+        colStock.setCellValueFactory(cell -> cell.getValue().getStock().asObject());
+        colProductID.setCellValueFactory(cell -> cell.getValue().getProductIdProperty().asObject());
+        colUserID.setCellValueFactory(cell -> cell.getValue().getUserIdProperty().asObject());
+
+        tblOrders.setItems(ord);
 
     }
 

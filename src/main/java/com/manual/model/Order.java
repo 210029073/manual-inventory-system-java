@@ -1,12 +1,10 @@
 package com.manual.model;
 
-import javafx.beans.property.FloatProperty;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleFloatProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.*;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -29,24 +27,50 @@ public class Order {
 
     private BooleanProperty status;
 
+    private ProductCollections pc;
+
+    private Product prd;
+
     public Order(
             int id,
             int userId,
             int productId,
             float price,
             Date deliveryDate,
-            Date orderDate
+            Date orderDate,
+            Boolean isProcessed
     ){
-        this.deliveryDate = new Date(String.valueOf(deliveryDate));
-        this.orderDate = new Date(String.valueOf(orderDate));
+        this.deliveryDate = deliveryDate;
+        this.orderDate = orderDate;
         this.price = new SimpleFloatProperty(price);
         this.id = id;
         this.userId = new SimpleIntegerProperty(userId);
-        this.productId = new SimpleIntegerProperty(userId);
-        this.status = null;
+        this.productId = new SimpleIntegerProperty(productId);
+        this.status = new SimpleBooleanProperty(isProcessed);
+        pc = new ProductCollections();
+        prd = pc.showProduct(productId);
     }
 
-    public Date getDeliveryDate() { return deliveryDate; }
+    public Order(){
+        this(
+                0,
+                0,
+                0,
+                0.0F,
+                null,
+                null,
+                null);
+    }
+
+    public StringProperty getDeliveryDate() {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+        String strDate = dateFormat.format(deliveryDate);
+        return new SimpleStringProperty(strDate);
+    }
+
+    public void setStatus(boolean status) {
+        this.status.set(status);
+    }
 
     public int getId() { return id; }
 
@@ -83,18 +107,13 @@ public class Order {
      * @return Unique product x which is associated with the current order which
      *         has been searched for in the products table
      * */
-    public Product getProductID(){
-        return  new ProductCollections().showProduct(productId.get());
-    }
 
     /**
      * @author Victory Mpokosa
-     * @param productId
      * @return Unique product x which has been searched for in the products table
      * */
-    public Product getProductID(int productId){
-        ProductCollections pc = new ProductCollections();
-        return pc.showProduct(productId);
+    public int getProductID(){
+        return prd.getId();
     }
 
     public IntegerProperty getUserIdProperty() {
@@ -103,5 +122,9 @@ public class Order {
 
     public IntegerProperty getProductIdProperty() {
         return this.productId;
+    }
+
+    public IntegerProperty getStock() {
+        return prd.quantityProperty();
     }
 }

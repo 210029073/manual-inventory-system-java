@@ -27,14 +27,16 @@ public class OrderCollections {
 
             while(result.next()){
                 Order order = new Order(
-                        result.getInt("orderId"),
+                        result.getInt("ordersId"),
                         result.getInt("userId"),
                         result.getInt("productsId"),
                         result.getFloat("price"),
                         result.getDate("deliveryDate"),
-                        result.getDate("orderDate")
+                        result.getDate("orderDate"),
+                        result.getBoolean("isProcessed")
                 );
                 orders.add(order);
+                System.out.println(order.getDeliveryDate());
             }
         } catch (SQLException e){
             System.err.println("Failed to get Orders: " + e.getMessage());
