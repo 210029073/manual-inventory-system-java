@@ -1,10 +1,12 @@
 package com.manual.model;
 
 import javafx.beans.property.*;
+import javafx.scene.image.Image;
 
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,6 +15,7 @@ import java.util.Date;
  * @since 23/02/2023
  * */
 public class Order {
+    private final Boolean isProcessed;
     private int id;
 
     private IntegerProperty userId;
@@ -27,6 +30,8 @@ public class Order {
 
     private BooleanProperty status;
 
+    private String process;
+
     private ProductCollections pc;
 
     private Product prd;
@@ -40,6 +45,8 @@ public class Order {
             Date orderDate,
             Boolean isProcessed
     ){
+        System.out.println(deliveryDate.toString());
+        System.out.println(LocalDate.now().toString());
         this.deliveryDate = deliveryDate;
         this.orderDate = orderDate;
         this.price = new SimpleFloatProperty(price);
@@ -49,6 +56,8 @@ public class Order {
         this.status = new SimpleBooleanProperty(isProcessed);
         pc = new ProductCollections();
         prd = pc.showProduct(productId);
+        process = statusCal(isProcessed);
+        this.isProcessed =isProcessed;
     }
 
     public Order(){
@@ -63,9 +72,7 @@ public class Order {
     }
 
     public StringProperty getDeliveryDate() {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-        String strDate = dateFormat.format(deliveryDate);
-        return new SimpleStringProperty(strDate);
+        return new SimpleStringProperty(deliveryDate.toString());
     }
 
     public void setStatus(boolean status) {
@@ -76,7 +83,7 @@ public class Order {
 
     public Integer getProductId() { return productId.getValue(); }
 
-
+    public Product getProduct() { return prd;}
 
     public Integer getUserId() { return userId.getValue();}
 
@@ -102,16 +109,6 @@ public class Order {
         return price;
     }
 
-    /**
-     * @author Victory Mpokosa
-     * @return Unique product x which is associated with the current order which
-     *         has been searched for in the products table
-     * */
-
-    /**
-     * @author Victory Mpokosa
-     * @return Unique product x which has been searched for in the products table
-     * */
     public int getProductID(){
         return prd.getId();
     }
@@ -127,4 +124,27 @@ public class Order {
     public IntegerProperty getStock() {
         return prd.quantityProperty();
     }
+
+    public String statusCal(Boolean st){
+        if(st){
+            return "Delivered";
+        }
+        return "Delivery date: "+deliveryDate+" Not Delivered";
+    }
+
+    public String toString() {
+        return ("Model: "+prd.getProductModel()+"\n"
+                +"Description: "+prd.getProductDescription()+"\n"
+                +"Stock: "+prd.getQuantity()+"\n"
+                +"OrderId: "+id+"\n"
+                +"Delivery status: "+process);
+    }
+
+    public Image getImage() {
+        return new Image("/com.manual.main/"+prd.getImageFilePath());
+    }
+
+    public Boolean isProcessed(Boolean result){ if (result){return true;}else {return false;}}
+
+
 }

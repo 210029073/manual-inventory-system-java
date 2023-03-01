@@ -4,6 +4,7 @@ import com.manual.ManualDatabaseConnection;
 import com.manual.model.OrderCollections;
 import com.manual.model.Product;
 import com.manual.model.ProductCollections;
+import com.manual.orders.OrdersController;
 import com.manual.productManagement.ProductListController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,6 +88,10 @@ public class DashboardController {
                 this.txtPendingOrderMsg.setText("There is pending orders awaiting");
                 this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");
             }
+            if (oc.getPastOrders().size() > 0){
+                this.txtOrdersApprovedMsg.setText("Orders approved");
+                this.txtOrdersApprovedQuantity.setText("There is "+oc.getPastOrders().size()+" orders");
+            }
 
         }
 
@@ -101,6 +106,34 @@ public class DashboardController {
     @FXML
     public void btnExit() {
         this.stockLevelContainer.getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void pastOrders() {
+        viewPastOrders();
+    }
+
+    @FXML
+    public void viewPastOrders() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/orders.fxml"));
+        final OrdersController oc = new OrdersController();
+        try {
+            Stage stage = new Stage();
+            loader.setController(oc);
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Manage Orders");
+            stage.setResizable(true);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

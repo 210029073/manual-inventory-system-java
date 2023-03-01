@@ -54,12 +54,39 @@ public class OrdersController {
     @FXML
     private Label orderDetail;
 
+    @FXML
+    private ListView<Order> pendingOrds;
+
+    @FXML
+    private ListView<Order> pastOrds;
+
+    @FXML
+    private Label sizePast;
+
+    @FXML
+    private Label sizePending;
+
+
+
     public void initialize() {
         load();
     }
 
     @FXML
     public void btnDelivered() {
+        OrderCollections oc = new OrderCollections();
+        oc.updateOrders(tblOrders.getSelectionModel().getSelectedItem(),true);
+        load();
+    }
+
+    @FXML
+    public void btnNot(){
+        OrderCollections oc = new OrderCollections();
+        oc.updateOrders(tblOrders.getSelectionModel().getSelectedItem(),false);
+        load();
+    }
+
+    public OrdersController(){
 
     }
 
@@ -67,7 +94,8 @@ public class OrdersController {
         OrderCollections oc = new OrderCollections();
         ArrayList<Order> orders = new ArrayList<>(oc.getOrders());
         ObservableList<Order> ord = FXCollections.observableArrayList(orders);
-        System.out.println(oc.getOrders());
+        ObservableList<Order> ods = FXCollections.observableArrayList(oc.getPendingOrders());
+        ObservableList<Order> past = FXCollections.observableArrayList(oc.getPastOrders());
         // colDeliveryDate.setCellValueFactory(cell -> cell.getValue().getDeliveryDate());
         colStatus.setCellValueFactory(cell -> cell.getValue().getStatus());
         colStock.setCellValueFactory(cell -> cell.getValue().getStock().asObject());
@@ -75,18 +103,23 @@ public class OrdersController {
         colUserID.setCellValueFactory(cell -> cell.getValue().getUserIdProperty().asObject());
 
         tblOrders.setItems(ord);
-        detailImg = new ImageView();
+        pendingOrds.setItems(ods);
+        pastOrds.setItems(past);
+        sizePast.setText(" "+past.size()+" ");
+        sizePending.setText(" "+ods.size()+" ");
+        orderDetail.setText("Description");
+        Image image = new Image("/com.manual.main/car.jpg");
+        detailImg.setImage(image);
 
     }
 
     @FXML
     public void detailView(MouseEvent event) {
         if(event.getClickCount() == 2) {
-            System.out.println("1");
-            Image image = new Image("/com.manual.main/audi.jpg");
-            System.out.println(image);
-            detailImg.setImage(image);
-            System.out.println(detailImg.getImage());
+            detailImg.setImage(tblOrders.getSelectionModel().getSelectedItem().getImage());
+            orderDetail.setText(tblOrders.getSelectionModel().getSelectedItem().toString());
+            // System.out.println(ords.getId());
+
         }
     }
 }

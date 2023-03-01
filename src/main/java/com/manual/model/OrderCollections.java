@@ -3,6 +3,7 @@ package com.manual.model;
 import com.manual.ManualDatabaseConnection;
 import com.manual.model.Order;
 import com.manual.orders.OrdersController;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -74,9 +75,49 @@ public class OrderCollections {
         return pendingOrders;
     }
 
-    public Boolean status(Order od){
-        SimpleDateFormat formatter= new SimpleDateFormat("YYYY-MM-DD HH:MM:SS");
-        Date date = new Date(System.currentTimeMillis());
-        return od.getDeliveryDate().equals(date);
+    public List<Order> getPastOrders() {
+        List<Order> pendingOrders = new ArrayList<>();
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+            ResultSet sql = connection.createStatement().executeQuery("SELECT * FROM orders WHERE isProcessed = true");
+            while(sql.next()) {
+                Order order = new Order(
+                        sql.getInt("ordersId"),
+                        sql.getInt("userId"),
+                        sql.getInt("productsId"),
+                        sql.getFloat("price"),
+                        sql.getDate("deliveryDate"),
+                        sql.getDate("orderDate"),
+                        sql.getBoolean("isProcessed")
+                );
+
+                pendingOrders.add(order);
+            }
+        }
+
+        catch (SQLException e) {
+            System.err.println("Failed to get orders.");
+            e.printStackTrace();
+        }
+
+        return pendingOrders;
+    }
+    public void updateOrders(Order ord, Boolean result){
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+            PreparedStatement sql = connection.prepareStatement("UPDATE orders SET `isProcessed` = ? WHERE ordersId="+ord.getId());
+            sql.setBoolean(1,ord.isProcessed(result));
+            if(ord.getProduct().getQuantity() >0 && result){
+                PreparedStatement sql2 = connection.prepareStatement("UPDATE products SET `stock` = ? WHERE productsId="+ord.getProductId());
+                sql2.setInt(1, ord.getProduct().getQuantity()-1);
+                sql2.executeUpdate();
+                System.out.println("Stock Updated");
+            }
+            sql.executeUpdate();
+            System.out.println("Done");
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }
