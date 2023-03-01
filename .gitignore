@@ -1,4 +1,4 @@
-/target/classes/*
+/target/classes/
 /target/classes/com/manual/login/LoginController.class
 /target/classes/com/manual/menu/MenuController.class
 /target/classes/com.manual.main/add_employee.fxml
