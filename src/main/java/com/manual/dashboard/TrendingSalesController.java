@@ -58,6 +58,7 @@ public class TrendingSalesController {
             totalCarBrand.replace(o.getProduct().getProductBrand(), oldValue + 1);
 
             dataSets.replace(o.getProduct().getProductBrand(), productBrand);
+            barChart.getData().remove(productBrand);
             barChart.getData().add(productBrand);
         }
 
