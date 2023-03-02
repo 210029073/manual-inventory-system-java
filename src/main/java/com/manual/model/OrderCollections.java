@@ -39,7 +39,6 @@ public class OrderCollections {
                         result.getBoolean("isProcessed")
                 );
                 orders.add(order);
-                System.out.println(order.getDeliveryDate());
             }
         } catch (SQLException e){
             System.err.println("Failed to get Orders: " + e.getMessage());

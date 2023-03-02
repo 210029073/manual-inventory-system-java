@@ -165,4 +165,29 @@ public class DashboardController {
 
         initialize();
     }
+
+    @FXML
+    public void onTrendingStocks() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/trending_products.fxml"));
+
+        try {
+            Stage stage = new Stage();
+
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("Trending Cars in Inventory");
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
