@@ -60,6 +60,7 @@ public class TrendingSalesController {
             dataSets.replace(o.getProduct().getProductBrand(), productBrand);
             barChart.getData().add(productBrand);
         }
+
         container.getChildren().add(barChart);
 //        barChart.getData().add();
     }
