@@ -45,9 +45,10 @@ public class Order {
             Date orderDate,
             Boolean isProcessed
     ){
-        System.out.println(deliveryDate.toString());
-        System.out.println(LocalDate.now().toString());
+//        System.out.println(deliveryDate.toString());
+//        System.out.println(LocalDate.now().toString());
         this.deliveryDate = deliveryDate;
+        this.orderDate = orderDate;
         this.orderDate = orderDate;
         this.price = new SimpleFloatProperty(price);
         this.id = id;

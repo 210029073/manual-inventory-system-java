@@ -92,7 +92,6 @@ public class DashboardController {
         }
 
         OrderCollections oc = new OrderCollections();
-        System.out.println(oc.getPendingOrders());
         if(oc.getPendingOrders().size() > 0) {
             this.txtPendingOrderMsg.setText("There is pending orders awaiting");
             this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");

@@ -61,7 +61,6 @@ public class AddProductController {
 //            stage.setScene(scene);
 //            stage.showAndWait();
 
-        System.out.println("Coming soon...");
     }
 
     @FXML
