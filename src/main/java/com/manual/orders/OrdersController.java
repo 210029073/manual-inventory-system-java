@@ -86,10 +86,6 @@ public class OrdersController {
         load();
     }
 
-    public OrdersController(){
-
-    }
-
     public void load() {
         OrderCollections oc = new OrderCollections();
         ArrayList<Order> orders = new ArrayList<>(oc.getOrders());

@@ -15,6 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class AddProductController {
@@ -54,6 +55,8 @@ public class AddProductController {
             File f = fileChooser.showOpenDialog(vBox.getScene().getWindow());
             if(f == null) {}
             else txtImagePath.setText(f.getName());
+        FileWriter fw = new FileWriter(f);
+        fw.write(String.valueOf(getClass().getResource("/com.manual.main/cars/")));
 //            vBox.getChildren().add();
 //            stage.setScene(scene);
 //            stage.showAndWait();
