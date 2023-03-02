@@ -15,7 +15,7 @@
             <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Refresh" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Main Menu" textAlignment="CENTER" wrapText="true" />
             <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#pastOrders" prefHeight="80.0" prefWidth="80.0" text="Past Orders" textAlignment="CENTER" wrapText="true" />
-            <Button layoutX="10.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#onTrendingStocks" prefHeight="80.0" prefWidth="80.0" text="Trending Stocks" textAlignment="CENTER" wrapText="true" />
+            <Button layoutX="10.0" layoutY="170.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Trending Stocks" textAlignment="CENTER" wrapText="true" />
             <Button layoutX="10.0" layoutY="250.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="About" />
             <Button layoutX="20.0" layoutY="534.0" mnemonicParsing="false" onMouseClicked="#btnExit" prefHeight="80.0" prefWidth="80.0" text="Exit" />
          </children>
