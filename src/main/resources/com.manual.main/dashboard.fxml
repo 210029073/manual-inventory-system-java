@@ -39,7 +39,7 @@
                         <Font size="14.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btnProcessOrder" mnemonicParsing="false" prefHeight="40.0" text="Process Orders" />
+                  <Button fx:id="btnProcessOrder" mnemonicParsing="false" onMouseClicked="#pastOrders" prefHeight="40.0" text="Process Orders" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
