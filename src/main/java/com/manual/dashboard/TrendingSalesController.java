@@ -19,6 +19,7 @@ import java.util.List;
 
 public class TrendingSalesController {
 
+    private final OrderCollections orderCollections;
     @FXML
     private VBox container;
 
@@ -33,31 +34,33 @@ public class TrendingSalesController {
         this.dataSets = new HashMap<>();
         this.productCollections = new ProductCollections();
 
+        orderCollections = new OrderCollections();
     }
 
     public void initialize() {
         List<String> xData = new ArrayList<>();
 
         prepareData(xData);
+
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Mostly Brought");
+
         ObservableList<String> xAxis = FXCollections.observableArrayList(xData);
         CategoryAxis xCarAxis = new CategoryAxis(xAxis);
         xCarAxis.setLabel("Cars");
+
         BarChart<String, Number> barChart = new BarChart<>(xCarAxis, yAxis);
         barChart.setTitle("Trending Cars");
         XYChart.Series<String, Number> data = new XYChart.Series<>();
-        OrderCollections orderCollections = new OrderCollections();
 
         plotData(barChart, orderCollections);
 
         container.getChildren().add(barChart);
-//        barChart.getData().add();
     }
 
     private void plotData(BarChart<String, Number> barChart, OrderCollections orderCollections) {
         for (Order o : orderCollections.getPastOrders()) {
-            XYChart.Series productBrand = dataSets.get(o.getProduct().getProductBrand());
+            XYChart.Series<String, Number> productBrand = dataSets.get(o.getProduct().getProductBrand());
 
             productBrand.getData().add(new XYChart.Data<>(o.getProduct().getProductBrand(), totalCarBrand.get(o.getProduct().getProductBrand())));
 
