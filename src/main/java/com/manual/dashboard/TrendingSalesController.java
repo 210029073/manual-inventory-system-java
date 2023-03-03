@@ -38,6 +38,10 @@ public class TrendingSalesController {
     }
 
     public void initialize() {
+        prepareTrendingSalesGraph();
+    }
+
+    private void prepareTrendingSalesGraph() {
         List<String> xData = new ArrayList<>();
 
         prepareData(xData);
