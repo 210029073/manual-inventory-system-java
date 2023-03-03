@@ -24,21 +24,21 @@ public class TrendingSalesController {
 
     private HashMap<String, Number> totalCarBrand;
 
-    public void initialize() {
+    private HashMap<String, XYChart.Series<String, Number>> dataSets;
+
+    private ProductCollections productCollections;
+
+    public TrendingSalesController() {
         this.totalCarBrand = new HashMap<>();
+        this.dataSets = new HashMap<>();
+        this.productCollections = new ProductCollections();
+
+    }
+
+    public void initialize() {
         List<String> xData = new ArrayList<>();
-        ProductCollections productCollections = new ProductCollections();
-        int numBrand;
-        HashMap<String, XYChart.Series<String, Number>> dataSets = new HashMap<>();
 
-        for (Product p : productCollections.getProducts()) {
-            totalCarBrand.put(p.getProductBrand(), 0);
-            XYChart.Series<String, Number> carSeries = new XYChart.Series<>();
-            carSeries.setName(p.getProductBrand());
-            dataSets.put(p.getProductBrand(), carSeries);
-            xData.add(p.getProductBrand());
-
-        }
+        prepareData(xData);
         NumberAxis yAxis = new NumberAxis();
         yAxis.setLabel("Mostly Brought");
         ObservableList<String> xAxis = FXCollections.observableArrayList(xData);
@@ -49,6 +49,13 @@ public class TrendingSalesController {
         XYChart.Series<String, Number> data = new XYChart.Series<>();
         OrderCollections orderCollections = new OrderCollections();
 
+        plotData(barChart, orderCollections);
+
+        container.getChildren().add(barChart);
+//        barChart.getData().add();
+    }
+
+    private void plotData(BarChart<String, Number> barChart, OrderCollections orderCollections) {
         for (Order o : orderCollections.getPastOrders()) {
             XYChart.Series productBrand = dataSets.get(o.getProduct().getProductBrand());
 
@@ -61,9 +68,17 @@ public class TrendingSalesController {
             barChart.getData().remove(productBrand);
             barChart.getData().add(productBrand);
         }
+    }
 
-        container.getChildren().add(barChart);
-//        barChart.getData().add();
+    private void prepareData(List<String> xData) {
+        for (Product p : productCollections.getProducts()) {
+            totalCarBrand.put(p.getProductBrand(), 0);
+            XYChart.Series<String, Number> carSeries = new XYChart.Series<>();
+            carSeries.setName(p.getProductBrand());
+            dataSets.put(p.getProductBrand(), carSeries);
+            xData.add(p.getProductBrand());
+
+        }
     }
 
     @FXML
