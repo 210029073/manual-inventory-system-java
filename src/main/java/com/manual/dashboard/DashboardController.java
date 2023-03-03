@@ -1,6 +1,7 @@
 package com.manual.dashboard;
 
 import com.manual.ManualDatabaseConnection;
+import com.manual.menu.MenuController;
 import com.manual.model.OrderCollections;
 import com.manual.model.Product;
 import com.manual.model.ProductCollections;
@@ -10,7 +11,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -113,7 +116,14 @@ public class DashboardController {
 
     @FXML
     public void btnExit() {
-        this.stockLevelContainer.getScene().getWindow().hide();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to continue?", ButtonType.OK, ButtonType.CANCEL);
+        alert.setTitle("Exiting Inventory System");
+        alert.setHeaderText("Exiting Inventory System");
+        alert.showAndWait();
+
+        if(alert.getResult() == ButtonType.OK) {
+            System.exit(0);
+        }
     }
 
     @FXML
@@ -194,6 +204,25 @@ public class DashboardController {
             stage.showAndWait();
         }
 
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML()
+    public void viewMainMenu() {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/menu.fxml"));
+        try {
+            Stage stage = new Stage();
+            loader.setController(new MenuController());
+            Parent parent = loader.load();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("Main Menu");
+            stage.setScene(new Scene(parent));
+            stage.show();;
+        }
         catch (IOException e) {
             e.printStackTrace();
         }

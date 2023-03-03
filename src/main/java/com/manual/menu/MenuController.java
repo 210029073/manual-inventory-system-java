@@ -10,12 +10,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class MenuController {
+
+    @FXML
+    private VBox container;
 
     /**
      * This will simply show the dashboard gui.
@@ -80,14 +84,7 @@ public class MenuController {
      * @since 10/02/2023*/
     @FXML
     public void exitMenu() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to continue?", ButtonType.OK, ButtonType.CANCEL);
-        alert.setTitle("Exiting Inventory System");
-        alert.setHeaderText("Exiting Inventory System");
-        alert.showAndWait();
-
-        if(alert.getResult() == ButtonType.OK) {
-            System.exit(0);
-        }
+        this.container.getScene().getWindow().hide();
     }
 
     @FXML
