@@ -17,10 +17,12 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -185,7 +187,26 @@ public class TrendingSalesController {
 
     @FXML
     public void viewAboutInfo() {
+        Stage stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.setTitle("About");
+        stage.setResizable(false);
 
+        VBox vbox = new VBox();
+
+        String msg = "App used for managing inventory"
+                + "\n" + "Used MySQL as Server Database." +
+                "\n\n\n\n" + "Created by Team 21";
+
+        Label lblMsg = new Label(msg);
+        lblMsg.textAlignmentProperty().set(TextAlignment.CENTER);
+        lblMsg.setPadding(new Insets(10,10,10,10));
+
+        vbox.getChildren().add(lblMsg);
+
+        Scene scene = new Scene(vbox, 300, 150);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
     @FXML
