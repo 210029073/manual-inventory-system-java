@@ -13,10 +13,14 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AddProductController {
     @FXML
@@ -41,7 +45,7 @@ public class AddProductController {
     private TextField txtProductPopularity;
 
     @FXML
-    public void fileBrowse() throws IOException {
+    public void fileBrowse() throws IOException, URISyntaxException {
         FileChooser fileChooser = new FileChooser();
 
             Stage stage = new Stage();
@@ -55,11 +59,12 @@ public class AddProductController {
             File f = fileChooser.showOpenDialog(vBox.getScene().getWindow());
             if(f == null) {}
             else txtImagePath.setText(f.getName());
-        FileWriter fw = new FileWriter(f);
-        fw.write(String.valueOf(getClass().getResource("/com.manual.main/cars/")));
-//            vBox.getChildren().add();
-//            stage.setScene(scene);
-//            stage.showAndWait();
+        FileUtils.copyFile(
+                FileUtils.getFile(f.getPath()),
+                FileUtils.getFile("src/main/resources/cars/"+f.getName()),
+                true
+        );
+
 
     }
 

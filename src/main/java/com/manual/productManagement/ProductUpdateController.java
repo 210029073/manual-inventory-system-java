@@ -1,7 +1,7 @@
 package com.manual.productManagement;
 
-import com.manual.model.ProductCollections;
 import com.manual.model.Product;
+import com.manual.model.ProductCollections;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -13,9 +13,11 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 public class ProductUpdateController {
     @FXML
@@ -63,7 +65,7 @@ public class ProductUpdateController {
 
 
     @FXML
-    public void fileBrowse() throws IOException {
+    public void fileBrowse() throws IOException, URISyntaxException {
         FileChooser fileChooser = new FileChooser();
 
         Stage stage = new Stage();
@@ -75,17 +77,20 @@ public class ProductUpdateController {
 
         Scene scene = new Scene(vBox);
         File f = fileChooser.showOpenDialog(vBox.getScene().getWindow());
-        if(f == null) {}
-        else txtImagePath.setText(f.getName());
-//            vBox.getChildren().add();
-//            stage.setScene(scene);
-//            stage.showAndWait();
 
-        System.out.println("Coming soon...");
+        if(f == null) {}
+        else {
+            txtImagePath.setText(f.getName());
+            System.out.println(f.getPath());
+            FileUtils.copyFile(
+                    FileUtils.getFile(f.getPath()),
+                    FileUtils.getFile("src/main/resources/com.manual.main/cars/"+f.getName())
+                    , true);
+        }
     }
 
     @FXML
-    public void updateItem() {
+    public void updateItem() throws URISyntaxException {
         ProductCollections pc = new ProductCollections();
 
         //validations
