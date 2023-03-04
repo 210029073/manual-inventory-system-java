@@ -35,8 +35,8 @@ import java.util.List;
 
 public class TrendingSalesController {
 
-    private final OrderCollections orderCollections;
-    private final VBox annualSalesContainer;
+    private OrderCollections orderCollections;
+    private VBox annualSalesContainer;
     @FXML
     private VBox container;
 
@@ -54,6 +54,7 @@ public class TrendingSalesController {
     private ObservableList<String> xAxis;
     private CategoryAxis xCarAxis;
     private NumberAxis yAxis;
+    private BarChart<String, Number> barChart;
 
     public TrendingSalesController() {
         this.totalCarBrand = new HashMap<>();
@@ -109,7 +110,7 @@ public class TrendingSalesController {
             xCarAxis = new CategoryAxis(xAxis);
             xCarAxis.setLabel("Cars");
 
-            BarChart<String, Number> barChart = new BarChart<>(xCarAxis, yAxis);
+            barChart = new BarChart<>(xCarAxis, yAxis);
             barChart.setTitle("Trending Cars");
             XYChart.Series<String, Number> data = new XYChart.Series<>();
 
@@ -153,13 +154,48 @@ public class TrendingSalesController {
 
     @FXML
     public void refreshScreen() {
+        this.container.getChildren().clear();
+        this.totalCarBrand = new HashMap<>();
         this.dataSets = new HashMap<>();
-        this.xData = new ArrayList<>();
-        this.xAxis = FXCollections.observableArrayList(xData);
-        this.xCarAxis = new CategoryAxis(xAxis);
-        this.yAxis = new NumberAxis();
-        this.orderCollections.getPastOrders();
-        initialize();
+        List<String> newCategory = new ArrayList<>();
+
+        //prepare x axis
+        for(Product p : productCollections.getProducts()) {
+            if(!newCategory.contains(p.getProductBrand())) {
+                totalCarBrand.put(p.getProductBrand(), 0);
+                XYChart.Series<String, Number> carSeries = new XYChart.Series<>();
+                carSeries.setName(p.getProductBrand());
+                dataSets.put(p.getProductBrand(), carSeries);
+                newCategory.add(p.getProductBrand());
+            }
+        }
+
+        CategoryAxis newX = new CategoryAxis(FXCollections.observableArrayList(newCategory));
+        newX.setLabel("Car Brands");
+        NumberAxis newY = new NumberAxis();
+
+        newY.setLabel("No. of Cars Sold");
+        BarChart<String, Number> car = new BarChart<>(newX, newY);
+        car.setTitle("Trending Cars");
+
+        //prepare the y axis
+        for (Order o : orderCollections.getPastOrders()) {
+            XYChart.Series<String, Number> productBrand = dataSets.get(o.getProduct().getProductBrand());
+            int oldValue = (int) totalCarBrand.get(o.getProduct().getProductBrand());
+
+            productBrand.getData().add(new XYChart.Data<>(o.getProduct().getProductBrand(), oldValue + 1));
+
+//            int oldValue = dataSets.get(o.getProduct().getProductBrand()).getData().size();
+            totalCarBrand.replace(o.getProduct().getProductBrand(), oldValue, oldValue + 1);
+            if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear()) {
+//                salesVal += o.getProduct().getProductPrice();
+//                this.txtAnnualSales.setText("£" + salesVal);
+            }
+            dataSets.replace(o.getProduct().getProductBrand(), productBrand);
+            car.getData().remove(productBrand);
+            car.getData().add(productBrand);
+        }
+        container.getChildren().add(car);
     }
 
     @FXML
