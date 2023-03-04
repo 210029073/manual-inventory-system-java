@@ -40,6 +40,8 @@ public class TrendingSalesController {
     @FXML
     private VBox container;
 
+    private VBox graphContainer;
+
     private HashMap<String, Number> totalCarBrand;
 
     private HashMap<String, XYChart.Series<String, Number>> dataSets;
@@ -65,6 +67,7 @@ public class TrendingSalesController {
         this.txtAnnualSales = new Text();
         annualSalesContainer = new VBox();
         this.statisticsContainer = new HBox();
+        this.graphContainer = new VBox();
     }
 
     public void initialize() {
@@ -77,7 +80,7 @@ public class TrendingSalesController {
     private void setAnnualSalesText() {
         annualSalesContainer.setSpacing(10);
         annualSalesContainer.paddingProperty().setValue(new Insets(25));
-        txtAnnualSalesMsg = new Text("Annual Sale Summary");
+        txtAnnualSalesMsg = new Text("Annual Sale of " + LocalDate.now().getYear());
         txtAnnualSalesMsg.setFont(new Font("Arial Bold", 24));
         if(!annualSalesContainer.getChildren().contains(txtAnnualSales) && !annualSalesContainer.getChildren().contains(txtAnnualSalesMsg)) {
             annualSalesContainer.getChildren().add(txtAnnualSalesMsg);
@@ -89,7 +92,7 @@ public class TrendingSalesController {
         if(!statisticsContainer.getChildren().contains(annualSalesContainer) && !container.getChildren().contains(statisticsContainer)) {
             statisticsContainer.setVisible(true);
             this.statisticsContainer.getChildren().add(annualSalesContainer);
-            this.container.getChildren().add(statisticsContainer);
+            this.graphContainer.getChildren().add(statisticsContainer);
         }
 
     }
@@ -108,7 +111,7 @@ public class TrendingSalesController {
         else {
             xAxis = FXCollections.observableArrayList(xData);
             xCarAxis = new CategoryAxis(xAxis);
-            xCarAxis.setLabel("Cars");
+            xCarAxis.setLabel("Car Brands");
 
             barChart = new BarChart<>(xCarAxis, yAxis);
             barChart.setTitle("Trending Cars");
@@ -116,7 +119,8 @@ public class TrendingSalesController {
 
             plotData(barChart, orderCollections);
 
-            container.getChildren().add(barChart);
+            graphContainer.getChildren().add(barChart);
+            container.getChildren().add(graphContainer);
         }
     }
 
@@ -133,7 +137,7 @@ public class TrendingSalesController {
             totalCarBrand.replace(o.getProduct().getProductBrand(), oldValue, oldValue + 1);
             if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear()) {
                 salesVal += o.getProduct().getProductPrice();
-                this.txtAnnualSales.setText("£" + salesVal);
+                this.txtAnnualSales.setText("£" + String.format("%.2f", salesVal));
             }
             dataSets.replace(o.getProduct().getProductBrand(), productBrand);
             barChart.getData().remove(productBrand);
@@ -154,7 +158,7 @@ public class TrendingSalesController {
 
     @FXML
     public void refreshScreen() {
-        this.container.getChildren().clear();
+        this.graphContainer.getChildren().clear();
         this.totalCarBrand = new HashMap<>();
         this.dataSets = new HashMap<>();
         List<String> newCategory = new ArrayList<>();
@@ -178,7 +182,15 @@ public class TrendingSalesController {
         BarChart<String, Number> car = new BarChart<>(newX, newY);
         car.setTitle("Trending Cars");
 
+        Text newTotalMsg = new Text();
+        newTotalMsg.setFont(new Font("Arial Bold", 24));
+        newTotalMsg.setText("Annual Sale of " + LocalDate.now().getYear());
+        Text newTotalProfitGained = new Text();
+        newTotalProfitGained.setFont(new Font("Arial", 22));
+        VBox statInfoContainer = new VBox();
+        HBox statInfo = new HBox();
         //prepare the y axis
+        Float salesVal = 0.00F;
         for (Order o : orderCollections.getPastOrders()) {
             XYChart.Series<String, Number> productBrand = dataSets.get(o.getProduct().getProductBrand());
             int oldValue = (int) totalCarBrand.get(o.getProduct().getProductBrand());
@@ -188,14 +200,20 @@ public class TrendingSalesController {
 //            int oldValue = dataSets.get(o.getProduct().getProductBrand()).getData().size();
             totalCarBrand.replace(o.getProduct().getProductBrand(), oldValue, oldValue + 1);
             if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear()) {
-//                salesVal += o.getProduct().getProductPrice();
-//                this.txtAnnualSales.setText("£" + salesVal);
+                salesVal += o.getProduct().getProductPrice();
+                newTotalProfitGained.setText("£" + String.format("%.2f", salesVal));
             }
             dataSets.replace(o.getProduct().getProductBrand(), productBrand);
             car.getData().remove(productBrand);
             car.getData().add(productBrand);
         }
-        container.getChildren().add(car);
+        statInfoContainer.getChildren().add(newTotalMsg);
+        statInfoContainer.getChildren().add(newTotalProfitGained);
+        statInfo.getChildren().add(statInfoContainer);
+        statInfoContainer.setSpacing(10);
+        statInfoContainer.paddingProperty().setValue(new Insets(25));
+        graphContainer.getChildren().add(car);
+        graphContainer.getChildren().add(statInfo);
     }
 
     @FXML
