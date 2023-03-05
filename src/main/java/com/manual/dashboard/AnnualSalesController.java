@@ -13,6 +13,8 @@ import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -76,19 +78,81 @@ public class AnnualSalesController {
 
         //prepare stat info
         //mean
+        Text meanMsg = new Text("Average earned from sales");
+        meanMsg.setFont(new Font("Arial Bold", 24));
+        Float result = 0F;
+        for(XYChart.Data data : annualSales.getData()) {
+            result += (Float) data.getYValue();
+        }
+        Float temp = result;
+//        result = temp / annualSales.getData().size();
+        Text mean = new Text("£" + String.format("%.2f", result));
+        mean.setFont(new Font("Arial", 22));
+        VBox meanContainer = new VBox();
+        meanContainer.getChildren().add(meanMsg);
+        meanContainer.getChildren().add(mean);
+        meanContainer.setSpacing(10);
+        meanContainer.paddingProperty().setValue(new Insets(25));
+        statisticsSummaryContainer.getChildren().add(meanContainer);
         //median
+        Float median = (Float) annualSales.getData().get(annualSales.getData().size()/2).getYValue();
+        Text medianMsg = new Text("Median");
+        medianMsg.setFont(new Font("Arial Bold", 22));
+        Text medianVal = new Text("£" + String.format("%.2f", median));
+        VBox medianContainer = new VBox();
+        medianContainer.getChildren().add(medianMsg);
+        medianContainer.getChildren().add(medianVal);
+        medianContainer.setSpacing(10);
+        medianContainer.paddingProperty().setValue(new Insets(25));
+        statisticsSummaryContainer.getChildren().add(medianContainer);
+
         //mode
+        this.container.getChildren().add(statisticsSummaryContainer);
     }
 
 
     @FXML
     public void refreshScreen() {
         //clear the graph container
-
+        this.graphContainer.getChildren().clear();
+        this.container.getChildren().remove(graphContainer);
         //clear text container
-
+        this.statisticsSummaryContainer.getChildren().clear();
+        this.container.getChildren().remove(statisticsSummaryContainer);
         //do the same as preparing
+        //prepare its x axis
+        List<String> xData = new ArrayList<>();
 
+        //populate with this year's orders
+        for(Order o : orderCollections.getPastOrders()) {
+            if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear() && !xData.contains(o.getOrderDate().toString())) {
+                xData.add(o.getOrderDate().toString());
+            }
+        }
+
+
+        Collections.sort(xData);
+
+        Axis dateAxis = new CategoryAxis(FXCollections.observableArrayList(xData));
+        dateAxis.setLabel("Dates");
+
+        //prepare its y axis
+        Axis profit = new NumberAxis();
+        profit.setLabel("Sales profit gained in pounds.");
+
+        //prepare data
+        XYChart.Series<String, Number> annualSales = new XYChart.Series<>();
+        for(Order order : orderCollections.getPastOrders()) {
+            annualSales.getData().add(new XYChart.Data<>(order.getOrderDate().toString(), order.getProduct().getProductPrice()));
+        }
+
+        //create the graph
+        this.salesChart = new LineChart<String, Number>(dateAxis, profit);
+        this.salesChart.getData().add(annualSales);
+        annualSales.setName("Amount gained in sale");
+        this.salesChart.setTitle("Total no. of revenue gained in sales");
+        this.graphContainer.getChildren().add(salesChart);
+        this.container.getChildren().add(graphContainer);
         //then add new graph and stat info to container.
     }
 

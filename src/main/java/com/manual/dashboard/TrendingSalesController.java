@@ -33,6 +33,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * TrendingSalesController will simply show a bar chart showing
+ * the mostly purchased car.
+ *
+ * @author Ibrahim Ahmad <210029073@aston.ac.uk>
+ * @since 05-03-2023
+ *     */
 public class TrendingSalesController {
 
     private OrderCollections orderCollections;
