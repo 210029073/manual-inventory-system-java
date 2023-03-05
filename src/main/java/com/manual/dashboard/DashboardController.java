@@ -69,50 +69,55 @@ public class DashboardController {
     private Text txtTotalStocks;
 
     public void initialize() {
-        ProductCollections pc = new ProductCollections();
+        try {
+            ProductCollections pc = new ProductCollections();
 
-        Integer totalStocks = pc.totalStockInInventory();
-        txtTotalStocks.setText(totalStocks.toString());
+            Integer totalStocks = pc.totalStockInInventory();
+            txtTotalStocks.setText(totalStocks.toString());
 
-        if(pc.insufficientStocks().size() != 0) {
+            if (pc.insufficientStocks().size() != 0) {
 
 
-            String lowStocks = "";
-            Iterator<Product> productIterator = pc.insufficientStocks().iterator();
-            while (productIterator.hasNext()) {
-                lowStocks += productIterator.next().getProductBrand() + " " + productIterator.next().getProductModel() + " with quantity of: " + productIterator.next().getQuantity() + "\n";
+                String lowStocks = "";
+                Iterator<Product> productIterator = pc.insufficientStocks().iterator();
+                while (productIterator.hasNext()) {
+                    lowStocks += productIterator.next().getProductBrand() + " " + productIterator.next().getProductModel() + " with quantity of: " + productIterator.next().getQuantity() + "\n";
+                }
+                this.txtStockLevelMsg.setText("There is insufficient levels of stock that needs your attention.");
+                this.txtStockLevelQuantity.setText(lowStocks);
+                this.lblStockTest.setVisible(false);
+                this.stockLevelContainer.setStyle("-fx-background-color: red; -fx-border-radius: 25%");
+
+            } else {
+                this.txtStockLevelMsg.setText("Stock levels are sufficient.");
+                this.txtStockLevelQuantity.setText("");
+                this.lblStockTest.setVisible(false);
+                this.stockLevelContainer.setStyle("-fx-background-color: limegreen; -fx-border-radius: 25%");
             }
-            this.txtStockLevelMsg.setText("There is insufficient levels of stock that needs your attention.");
-            this.txtStockLevelQuantity.setText(lowStocks);
-            this.lblStockTest.setVisible(false);
-            this.stockLevelContainer.setStyle("-fx-background-color: red; -fx-border-radius: 25%");
 
-        }
-
-        else {
-            this.txtStockLevelMsg.setText("Stock levels are sufficient.");
-            this.txtStockLevelQuantity.setText("");
-            this.lblStockTest.setVisible(false);
-            this.stockLevelContainer.setStyle("-fx-background-color: limegreen; -fx-border-radius: 25%");
-        }
-
-        OrderCollections oc = new OrderCollections();
-        if(oc.getPendingOrders().size() > 0) {
-            this.txtPendingOrderMsg.setText("There is pending orders awaiting");
-            this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");
-        }
-        else {
-            this.txtPendingOrderMsg.setText("There is currently no pending orders");
-            this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");
-        }
-        if (oc.getPastOrders().size() > 0){
-            this.txtOrdersApprovedMsg.setText("Orders approved");
-            this.txtOrdersApprovedQuantity.setText("There is "+oc.getPastOrders().size()+" orders");
+            OrderCollections oc = new OrderCollections();
+            if (oc.getPendingOrders().size() > 0) {
+                this.txtPendingOrderMsg.setText("There is pending orders awaiting");
+                this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");
+            } else {
+                this.txtPendingOrderMsg.setText("There is currently no pending orders");
+                this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");
+            }
+            if (oc.getPastOrders().size() > 0) {
+                this.txtOrdersApprovedMsg.setText("Orders approved");
+                this.txtOrdersApprovedQuantity.setText("There is " + oc.getPastOrders().size() + " orders");
+            } else {
+                this.txtOrdersApprovedMsg.setText("No Orders approved.");
+                this.txtOrdersApprovedQuantity.setText("Currently 0 orders");
+            }
         }
 
-        else {
-            this.txtOrdersApprovedMsg.setText("No Orders approved.");
-            this.txtOrdersApprovedQuantity.setText("Currently 0 orders");
+        catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Application is unable to connect to the server.");
+            alert.setTitle("Unable to start application");
+            alert.setHeaderText("Cannot start application");
+            alert.showAndWait();
+            System.exit(-1);
         }
     }
 
