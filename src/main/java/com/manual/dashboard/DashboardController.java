@@ -258,4 +258,27 @@ public class DashboardController {
         stage.setScene(scene);
         stage.showAndWait();
     }
+
+    @FXML
+    public void onAnnualSales() {
+        System.out.println("This is annual sales graph");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/annual_sales.fxml"));
+
+        try {
+            Stage stage = new Stage();
+            stage.initModality(Modality.WINDOW_MODAL);
+            stage.setTitle("Annual Sales");
+
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.showAndWait();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
