@@ -135,4 +135,16 @@ public class MenuController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void onAnnualSales() {
+        DashboardController dc = new DashboardController();
+        dc.onAnnualSales();
+    }
+
+    @FXML
+    public void onTrendingCars() {
+        DashboardController dc = new DashboardController();
+        dc.onTrendingStocks();
+    }
 }

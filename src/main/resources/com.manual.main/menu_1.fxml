@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="container" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="256.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnViewDash" prefHeight="256.0" prefWidth="345.0" text="View Dashboard" HBox.hgrow="ALWAYS" />
+            <Button layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="256.0" prefWidth="345.0" text="Reports" HBox.hgrow="ALWAYS" />
+            <Button layoutX="355.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="256.0" prefWidth="345.0" text="Update Stock" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="256.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#addItem" prefHeight="256.0" prefWidth="345.0" text="Add an Item" HBox.hgrow="ALWAYS" />
+            <Button layoutX="355.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnManageOrders" prefHeight="256.0" prefWidth="345.0" text="Manage Orders" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="522.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="256.0" prefWidth="1024.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#btnViewItems" prefHeight="256.0" prefWidth="345.0" text="View Items" HBox.hgrow="ALWAYS" />
+            <Button layoutX="355.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#exitMenu" prefHeight="256.0" prefWidth="345.0" text="Exit" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
