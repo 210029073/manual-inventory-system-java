@@ -1,27 +1,95 @@
 package com.manual.dashboard;
 
+import com.manual.model.Order;
+import com.manual.model.OrderCollections;
 import com.manual.orders.OrdersController;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class AnnualSalesController {
 
     @FXML
     private VBox container;
 
+    private VBox graphContainer;
+
+    private HBox statisticsSummaryContainer;
+
+    private LineChart<String, Number> salesChart;
+
+    private OrderCollections orderCollections;
+
+    public void initialize() {
+        this.graphContainer = new VBox();
+        this.statisticsSummaryContainer = new HBox();
+        this.orderCollections = new OrderCollections();
+        //prepare its x axis
+        List<String> xData = new ArrayList<>();
+
+        //populate with this year's orders
+        for(Order o : orderCollections.getPastOrders()) {
+            if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear() && !xData.contains(o.getOrderDate().toString())) {
+                xData.add(o.getOrderDate().toString());
+            }
+        }
+
+
+        Collections.sort(xData);
+
+        Axis dateAxis = new CategoryAxis(FXCollections.observableArrayList(xData));
+        dateAxis.setLabel("Dates");
+
+        //prepare its y axis
+        Axis profit = new NumberAxis();
+        profit.setLabel("Sales profit gained in pounds.");
+
+        //prepare data
+        XYChart.Series<String, Number> annualSales = new XYChart.Series<>();
+        for(Order order : orderCollections.getPastOrders()) {
+            annualSales.getData().add(new XYChart.Data<>(order.getOrderDate().toString(), order.getProduct().getProductPrice()));
+        }
+
+        //create the graph
+        this.salesChart = new LineChart<String, Number>(dateAxis, profit);
+        this.salesChart.getData().add(annualSales);
+        annualSales.setName("Amount gained in sale");
+        this.salesChart.setTitle("Total no. of revenue gained in sales");
+        this.graphContainer.getChildren().add(salesChart);
+        this.container.getChildren().add(graphContainer);
+
+        //prepare stat info
+        //mean
+        //median
+        //mode
+    }
+
+
     @FXML
     public void refreshScreen() {
+        //clear the graph container
 
+        //clear text container
+
+        //do the same as preparing
+
+        //then add new graph and stat info to container.
     }
 
     @FXML

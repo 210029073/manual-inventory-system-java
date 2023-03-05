@@ -108,7 +108,7 @@ public class Product {
         return this.productDescription;
     }
 
-    public float getProductPrice() {
+    public Float getProductPrice() {
         return productPrice.get();
     }
 
