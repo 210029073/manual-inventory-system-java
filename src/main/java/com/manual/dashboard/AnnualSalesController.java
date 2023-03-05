@@ -94,11 +94,13 @@ public class AnnualSalesController {
         meanContainer.setSpacing(10);
         meanContainer.paddingProperty().setValue(new Insets(25));
         statisticsSummaryContainer.getChildren().add(meanContainer);
+
         //median
         Float median = (Float) annualSales.getData().get(annualSales.getData().size()/2).getYValue();
         Text medianMsg = new Text("Median");
-        medianMsg.setFont(new Font("Arial Bold", 22));
+        medianMsg.setFont(new Font("Arial Bold", 24));
         Text medianVal = new Text("£" + String.format("%.2f", median));
+        medianVal.setFont(new Font("Arial", 22));
         VBox medianContainer = new VBox();
         medianContainer.getChildren().add(medianMsg);
         medianContainer.getChildren().add(medianVal);
@@ -107,6 +109,34 @@ public class AnnualSalesController {
         statisticsSummaryContainer.getChildren().add(medianContainer);
 
         //mode
+        int maxN = annualSales.getData().size();
+        float resultMode = 0;
+        for(int i = 0; i < annualSales.getData().size(); i++) {
+            int track = 0;
+            for(int j = 0; j < annualSales.getData().size(); j++) {
+                if(annualSales.getData().get(i).getYValue() == annualSales.getData().get(j).getYValue()) {
+                    ++track;
+                }
+            }
+
+            if(track < maxN) {
+                maxN = track;
+                resultMode = (float) annualSales.getData().get(i).getYValue();
+            }
+        }
+        Text modeMsg = new Text("Mode");
+        Text mode = new Text("£"+ String.format("%.2f", resultMode));
+
+        modeMsg.setFont(new Font("Arial Bold", 24));
+        mode.setFont(new Font("Arial", 22));
+
+        VBox modeContainer = new VBox();
+        modeContainer.getChildren().add(modeMsg);
+        modeContainer.getChildren().add(mode);
+        modeContainer.setSpacing(10);
+        modeContainer.paddingProperty().setValue(new Insets(25));
+        this.statisticsSummaryContainer.getChildren().add(modeContainer);
+
         this.container.getChildren().add(statisticsSummaryContainer);
     }
 
@@ -120,40 +150,41 @@ public class AnnualSalesController {
         this.statisticsSummaryContainer.getChildren().clear();
         this.container.getChildren().remove(statisticsSummaryContainer);
         //do the same as preparing
-        //prepare its x axis
-        List<String> xData = new ArrayList<>();
-
-        //populate with this year's orders
-        for(Order o : orderCollections.getPastOrders()) {
-            if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear() && !xData.contains(o.getOrderDate().toString())) {
-                xData.add(o.getOrderDate().toString());
-            }
-        }
-
-
-        Collections.sort(xData);
-
-        Axis dateAxis = new CategoryAxis(FXCollections.observableArrayList(xData));
-        dateAxis.setLabel("Dates");
-
-        //prepare its y axis
-        Axis profit = new NumberAxis();
-        profit.setLabel("Sales profit gained in pounds.");
-
-        //prepare data
-        XYChart.Series<String, Number> annualSales = new XYChart.Series<>();
-        for(Order order : orderCollections.getPastOrders()) {
-            annualSales.getData().add(new XYChart.Data<>(order.getOrderDate().toString(), order.getProduct().getProductPrice()));
-        }
-
-        //create the graph
-        this.salesChart = new LineChart<String, Number>(dateAxis, profit);
-        this.salesChart.getData().add(annualSales);
-        annualSales.setName("Amount gained in sale");
-        this.salesChart.setTitle("Total no. of revenue gained in sales");
-        this.graphContainer.getChildren().add(salesChart);
-        this.container.getChildren().add(graphContainer);
-        //then add new graph and stat info to container.
+        initialize();
+//        //prepare its x axis
+//        List<String> xData = new ArrayList<>();
+//
+//        //populate with this year's orders
+//        for(Order o : orderCollections.getPastOrders()) {
+//            if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear() && !xData.contains(o.getOrderDate().toString())) {
+//                xData.add(o.getOrderDate().toString());
+//            }
+//        }
+//
+//
+//        Collections.sort(xData);
+//
+//        Axis dateAxis = new CategoryAxis(FXCollections.observableArrayList(xData));
+//        dateAxis.setLabel("Dates");
+//
+//        //prepare its y axis
+//        Axis profit = new NumberAxis();
+//        profit.setLabel("Sales profit gained in pounds.");
+//
+//        //prepare data
+//        XYChart.Series<String, Number> annualSales = new XYChart.Series<>();
+//        for(Order order : orderCollections.getPastOrders()) {
+//            annualSales.getData().add(new XYChart.Data<>(order.getOrderDate().toString(), order.getProduct().getProductPrice()));
+//        }
+//
+//        //create the graph
+//        this.salesChart = new LineChart<String, Number>(dateAxis, profit);
+//        this.salesChart.getData().add(annualSales);
+//        annualSales.setName("Amount gained in sale");
+//        this.salesChart.setTitle("Total no. of revenue gained in sales");
+//        this.graphContainer.getChildren().add(salesChart);
+//        this.container.getChildren().add(graphContainer);
+//        //then add new graph and stat info to container.
     }
 
     @FXML
