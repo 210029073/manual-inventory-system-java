@@ -78,7 +78,12 @@ public class ProductListController {
         if(genres.getValue() != null){
             ProductCollections productCollections = new ProductCollections();
             ArrayList<Product> data = new ArrayList<>(productCollections.getProducts(genres.getValue()));
-            btnLoad(data);
+            if(genres.getValue().equals("All Products")){
+               btnLoad();
+            } else {
+                btnLoad(data);
+            }
+
         }
     }
 
