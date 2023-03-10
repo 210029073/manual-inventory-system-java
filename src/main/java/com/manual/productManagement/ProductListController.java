@@ -69,7 +69,13 @@ public class ProductListController {
 
     public void setGenres(){
         ObservableList<String> oL = FXCollections.observableArrayList();
-        oL.addAll("All Products","Audi","Mercedes");
+        ProductCollections pc = new ProductCollections();
+        ArrayList<String> filters = new ArrayList<>();
+        filters = (ArrayList<String>) pc.unique();
+        oL.add("All Products");
+        for(int i =0;i<=pc.unique().size()-1; i++){
+            oL.add(filters.get(i));
+        }
         genres.setItems(oL);
     }
 

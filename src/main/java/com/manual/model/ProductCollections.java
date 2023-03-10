@@ -158,6 +158,7 @@ public class ProductCollections {
 
     public List<Product> getProducts(String brd) {
         try {
+            unique();
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();
             PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM products WHERE brand = ?");
             pstmt.setString(1,brd);
@@ -182,5 +183,21 @@ public class ProductCollections {
             System.err.println("Failed to add a record: " + e.getMessage());
         }
         return products;
+    }
+
+    public List<String> unique(){
+        ArrayList<String> result = new ArrayList<>();
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+
+            ResultSet resultSet = connection.createStatement().executeQuery("SELECT DISTINCT brand FROM products");
+            while(resultSet.next()){
+                result.add(resultSet.getString("brand"));
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+        return result;
     }
 }
