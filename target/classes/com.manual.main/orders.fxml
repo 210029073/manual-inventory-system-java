@@ -52,7 +52,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="706.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -97,45 +97,48 @@
       <items>
         <AnchorPane maxWidth="1.7976931348623157E308" prefWidth="300.0" SplitPane.resizableWithParent="false">
           <children>
-            <Label alignment="CENTER" layoutX="6.0" layoutY="23.0" minWidth="60.0" prefHeight="27.0" prefWidth="200.0" style="&#10;" text="Master" textAlignment="CENTER" wrapText="false">
+            <Label alignment="CENTER" layoutX="34.0" layoutY="22.0" minWidth="60.0" prefHeight="27.0" prefWidth="200.0" style="&#10;" text="Fullfilment " textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
               <font>
                 <Font size="18.0" fx:id="x1" />
               </font>
-              <textFill>
-                <Color red="0.624" green="0.624" blue="0.624" fx:id="x2" />
-              </textFill>
             </Label>
-                  <ListView fx:id="pendingOrds" layoutX="9.0" layoutY="114.0" prefHeight="110.0" prefWidth="200.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="51.0" prefHeight="43.0" prefWidth="200.0" text="Pending Orders" textAlignment="CENTER" />
-                  <ListView fx:id="pastOrds" layoutX="9.0" layoutY="328.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Label alignment="CENTER" layoutX="10.0" layoutY="262.0" prefHeight="18.0" prefWidth="200.0" text="Past Orders" />
-                  <Label fx:id="sizePast" alignment="CENTER" layoutX="10.0" layoutY="291.0" prefHeight="18.0" prefWidth="200.0" />
-                  <Label fx:id="sizePending" alignment="CENTER" layoutX="10.0" layoutY="85.0" prefHeight="18.0" prefWidth="200.0" />
+                  <ListView fx:id="pendingOrds" editable="true" layoutX="18.0" layoutY="110.0" prefHeight="110.0" prefWidth="230.0" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="50.0" prefHeight="43.0" prefWidth="200.0" text="Pending Orders" textAlignment="CENTER" />
+                  <ListView fx:id="pastOrds" layoutX="19.0" layoutY="309.0" prefHeight="232.0" prefWidth="230.0" />
+                  <Label alignment="CENTER" layoutX="33.0" layoutY="262.0" prefHeight="18.0" prefWidth="200.0" text="Past Orders" />
+                  <Label fx:id="sizePast" alignment="CENTER" layoutX="34.0" layoutY="290.0" prefHeight="18.0" prefWidth="200.0" />
+                  <Label fx:id="sizePending" alignment="CENTER" layoutX="33.0" layoutY="84.0" prefHeight="18.0" prefWidth="200.0" />
           </children>
         </AnchorPane>
             <AnchorPane SplitPane.resizableWithParent="false">
                <children>
-                  <TableView fx:id="tblOrders" editable="true" layoutX="14.0" layoutY="14.0" onMouseClicked="#detailView" prefHeight="527.0" prefWidth="414.0" snapToPixel="false">
+                  <TableView fx:id="tblOrders" editable="true" layoutX="20.0" layoutY="64.0" onMouseClicked="#detailView" prefHeight="527.0" prefWidth="492.0" snapToPixel="false">
                     <columns>
+                        <TableColumn fx:id="colProductId" prefWidth="75.0" text="Product ID" />
                       <TableColumn fx:id="colUserID" prefWidth="75.0" text="User ID" />
                       <TableColumn fx:id="colProductID" prefWidth="75.0" text="Product ID" />
                         <TableColumn fx:id="colDevliveryDate" prefWidth="105.59999084472656" text="Delivery Date" />
-                        <TableColumn fx:id="colStatus" prefWidth="75.0" text="Status" />
-                        <TableColumn fx:id="colStock" prefWidth="75.0" text="Stock" />
+                        <TableColumn fx:id="colStatus" prefWidth="75.0" text="Processed" />
+                        <TableColumn fx:id="colStock" prefWidth="72.7999267578125" text="Stock" />
                     </columns>
                   </TableView>
+                  <Label alignment="CENTER" layoutX="18.0" layoutY="9.0" prefHeight="37.0" prefWidth="492.0" text="Orders List" textFill="#9f9f9f">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         <AnchorPane SplitPane.resizableWithParent="false">
           <children>
-            <Label alignment="CENTER" font="$x1" layoutX="12.0" layoutY="14.0" prefHeight="27.0" prefWidth="192.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="$x2" wrapText="false" />
-                  <Label fx:id="orderDetail" layoutX="11.0" layoutY="244.0" />
-                  <ImageView fx:id="detailImg" fitHeight="150.0" fitWidth="200.0" layoutX="11.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+            <Label alignment="CENTER" font="$x1" layoutX="37.0" layoutY="14.0" prefHeight="27.0" prefWidth="192.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" />
+                  <Label fx:id="orderDetail" alignment="CENTER" layoutX="11.0" layoutY="244.0" />
+                  <ImageView fx:id="detailImg" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@car.jpg" />
                      </image></ImageView>
-                  <Button layoutX="15.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnDelivered" text="Delivered" />
-                  <Button layoutX="118.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnNot" text="Not Delivered" />
+                  <Button layoutX="33.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnDelivered" text="Delivered" />
+                  <Button layoutX="143.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnNot" text="Not Delivered" />
           </children>
         </AnchorPane>
       </items>

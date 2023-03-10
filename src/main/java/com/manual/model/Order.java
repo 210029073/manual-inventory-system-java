@@ -4,9 +4,6 @@ import javafx.beans.property.*;
 import javafx.scene.image.Image;
 
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -16,7 +13,9 @@ import java.util.Date;
  * */
 public class Order {
     private final Boolean isProcessed;
-    private int id;
+
+    private Integer id2;
+    private IntegerProperty id;
 
     private IntegerProperty userId;
 
@@ -51,7 +50,8 @@ public class Order {
         this.orderDate = orderDate;
         this.orderDate = orderDate;
         this.price = new SimpleFloatProperty(price);
-        this.id = id;
+        this.id = new SimpleIntegerProperty(id);
+        this.id2 = id;
         this.userId = new SimpleIntegerProperty(userId);
         this.productId = new SimpleIntegerProperty(productId);
         this.status = new SimpleBooleanProperty(isProcessed);
@@ -80,7 +80,9 @@ public class Order {
         this.status.set(status);
     }
 
-    public int getId() { return id; }
+    public SimpleIntegerProperty getIdProperty() { return new SimpleIntegerProperty(id.getValue()); }
+
+    public Integer getId(){ return id2;}
 
     public Integer getProductId() { return productId.getValue(); }
 
@@ -98,7 +100,7 @@ public class Order {
 
     public void setOrderDate(Date orderDate) { this.orderDate = orderDate; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) { this.id.set(id); }
 
     public void setProductId(int productId) { this.productId.set(productId); }
 
@@ -130,14 +132,14 @@ public class Order {
         if(st){
             return "Delivered";
         }
-        return "Delivery date: "+deliveryDate+" Not Delivered";
+        return "Not Delivered "+"\n"+"Expected: "+deliveryDate;
     }
 
     public String toString() {
         return ("Model: "+prd.getProductModel()+"\n"
                 +"Description: "+prd.getProductDescription()+"\n"
                 +"Stock: "+prd.getQuantity()+"\n"
-                +"OrderId: "+id+"\n"
+                +"OrderId: "+id2+"\n"
                 +"Delivery status: "+process);
     }
 

@@ -40,13 +40,16 @@ public class OrdersController {
     private TableColumn<Order, Integer> colProductID;
 
     @FXML
-    private TableColumn<Order, String> colDeliveryDate;
+    private TableColumn<Order, String> colDevliveryDate;
 
     @FXML
     private TableColumn<Order, Boolean> colStatus;
 
     @FXML
     private TableColumn<Order, Integer> colStock;
+
+    @FXML
+    private TableColumn<Order, Integer> colProductId;
 
     @FXML
     private ImageView detailImg;
@@ -92,11 +95,12 @@ public class OrdersController {
         ObservableList<Order> ord = FXCollections.observableArrayList(orders);
         ObservableList<Order> ods = FXCollections.observableArrayList(oc.getPendingOrders());
         ObservableList<Order> past = FXCollections.observableArrayList(oc.getPastOrders());
-        // colDeliveryDate.setCellValueFactory(cell -> cell.getValue().getDeliveryDate());
+        colDevliveryDate.setCellValueFactory(cell -> cell.getValue().getDeliveryDate());
         colStatus.setCellValueFactory(cell -> cell.getValue().getStatus());
         colStock.setCellValueFactory(cell -> cell.getValue().getStock().asObject());
         colProductID.setCellValueFactory(cell -> cell.getValue().getProductIdProperty().asObject());
         colUserID.setCellValueFactory(cell -> cell.getValue().getUserIdProperty().asObject());
+        colProductId.setCellValueFactory(cell -> cell.getValue().getIdProperty().asObject());
 
         tblOrders.setItems(ord);
         pendingOrds.setItems(ods);
@@ -111,11 +115,9 @@ public class OrdersController {
 
     @FXML
     public void detailView(MouseEvent event) {
-        if(event.getClickCount() == 2) {
-            detailImg.setImage(tblOrders.getSelectionModel().getSelectedItem().getImage());
-            orderDetail.setText(tblOrders.getSelectionModel().getSelectedItem().toString());
+        detailImg.setImage(tblOrders.getSelectionModel().getSelectedItem().getImage());
+        orderDetail.setText(tblOrders.getSelectionModel().getSelectedItem().toString());
             // System.out.println(ords.getId());
 
         }
-    }
 }
