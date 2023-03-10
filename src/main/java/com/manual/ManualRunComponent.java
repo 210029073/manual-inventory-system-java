@@ -19,8 +19,9 @@ public class ManualRunComponent extends Application {
         fxmlLoader.setLocation(getClass().getResource("/com.manual.main/dashboard.fxml"));
         HBox container = fxmlLoader.load();
         stage.setScene(new Scene(container));
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.setTitle("Inventory Management System - Dashboard");
+        stage.setMaximized(true);
         stage.show();
     }
 }

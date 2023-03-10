@@ -147,7 +147,5 @@ public class Order {
         return new Image("/com.manual.main/"+prd.getImageFilePath());
     }
 
-    public Boolean isProcessed(Boolean result){ if (result){return true;}else {return false;}}
-
-
+    public Boolean isProcessed(Boolean result){ return result;}
 }

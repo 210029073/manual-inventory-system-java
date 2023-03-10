@@ -49,7 +49,7 @@ public class OrdersController {
     private TableColumn<Order, Integer> colStock;
 
     @FXML
-    private TableColumn<Order, Integer> colProductId;
+    private TableColumn<Order, Integer> colOrderId;
 
     @FXML
     private ImageView detailImg;
@@ -100,7 +100,7 @@ public class OrdersController {
         colStock.setCellValueFactory(cell -> cell.getValue().getStock().asObject());
         colProductID.setCellValueFactory(cell -> cell.getValue().getProductIdProperty().asObject());
         colUserID.setCellValueFactory(cell -> cell.getValue().getUserIdProperty().asObject());
-        colProductId.setCellValueFactory(cell -> cell.getValue().getIdProperty().asObject());
+        colOrderId.setCellValueFactory(cell -> cell.getValue().getIdProperty().asObject());
 
         tblOrders.setItems(ord);
         pendingOrds.setItems(ods);

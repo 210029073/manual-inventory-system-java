@@ -52,7 +52,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="706.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -110,23 +110,23 @@
                   <Label fx:id="sizePending" alignment="CENTER" layoutX="33.0" layoutY="84.0" prefHeight="18.0" prefWidth="200.0" />
           </children>
         </AnchorPane>
-            <AnchorPane SplitPane.resizableWithParent="false">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" snapToPixel="false">
                <children>
-                  <TableView fx:id="tblOrders" editable="true" layoutX="20.0" layoutY="64.0" onMouseClicked="#detailView" prefHeight="527.0" prefWidth="492.0" snapToPixel="false">
-                    <columns>
-                        <TableColumn fx:id="colProductId" prefWidth="75.0" text="Product ID" />
-                      <TableColumn fx:id="colUserID" prefWidth="75.0" text="User ID" />
-                      <TableColumn fx:id="colProductID" prefWidth="75.0" text="Product ID" />
-                        <TableColumn fx:id="colDevliveryDate" prefWidth="105.59999084472656" text="Delivery Date" />
-                        <TableColumn fx:id="colStatus" prefWidth="75.0" text="Processed" />
-                        <TableColumn fx:id="colStock" prefWidth="72.7999267578125" text="Stock" />
-                    </columns>
-                  </TableView>
-                  <Label alignment="CENTER" layoutX="18.0" layoutY="9.0" prefHeight="37.0" prefWidth="492.0" text="Orders List" textFill="#9f9f9f">
+                  <Label alignment="CENTER" layoutX="389.0" layoutY="17.0" text="Orders List" textFill="#9f9f9f" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="370.9775390625">
                      <font>
                         <Font name="Arial" size="18.0" />
                      </font>
                   </Label>
+                  <TableView fx:id="tblOrders" editable="true" layoutX="-36.0" layoutY="54.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseClicked="#detailView" prefHeight="486.0" prefWidth="776.0" snapToPixel="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="54.0">
+                    <columns>
+                        <TableColumn fx:id="colOrderId" prefWidth="129.6000030040741" text="Order ID" />
+                      <TableColumn fx:id="colUserID" prefWidth="117.60000610351562" text="User ID" />
+                      <TableColumn fx:id="colProductID" prefWidth="146.3999481201172" text="Product ID" />
+                        <TableColumn fx:id="colDevliveryDate" minWidth="0.0" prefWidth="140.26666259765625" text="Delivery Date" />
+                        <TableColumn fx:id="colStatus" minWidth="-1.0" prefWidth="109.33331298828125" resizable="false" text="Processed" />
+                        <TableColumn fx:id="colStock" minWidth="-1.0" prefWidth="130.66668701171875" text="Stock" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
         <AnchorPane SplitPane.resizableWithParent="false">

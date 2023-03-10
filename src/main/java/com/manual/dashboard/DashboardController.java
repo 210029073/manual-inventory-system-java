@@ -152,6 +152,7 @@ public class DashboardController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Manage Orders");
             stage.setResizable(true);
+            stage.setMaximized(true);
 
             Scene scene = new Scene(parent);
             stage.setScene(scene);
