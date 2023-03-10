@@ -111,11 +111,11 @@ public class TrendingSalesController {
 
         yAxis = new NumberAxis();
         yAxis.setLabel("Mostly Brought");
-        if(xAxis != null) {
-            xAxis = FXCollections.observableArrayList(new ArrayList<>());
-            xCarAxis = new CategoryAxis(xAxis);
-        }
-        else {
+//        if(xAxis != null) {
+//            xAxis = FXCollections.observableArrayList(new ArrayList<>());
+//            xCarAxis = new CategoryAxis(xAxis);
+//        }
+//        else {
             xAxis = FXCollections.observableArrayList(xData);
             xCarAxis = new CategoryAxis(xAxis);
             xCarAxis.setLabel("Car Brands");
@@ -128,7 +128,7 @@ public class TrendingSalesController {
 
             graphContainer.getChildren().add(barChart);
             container.getChildren().add(graphContainer);
-        }
+//        }
     }
 
     private void plotData(BarChart<String, Number> barChart, OrderCollections orderCollections) {
@@ -154,12 +154,14 @@ public class TrendingSalesController {
 
     private void prepareData(List<String> xData) {
         for (Product p : productCollections.getProducts()) {
-            totalCarBrand.put(p.getProductBrand(), 0);
-            XYChart.Series<String, Number> carSeries = new XYChart.Series<>();
-            carSeries.setName(p.getProductBrand());
-            dataSets.put(p.getProductBrand(), carSeries);
-            xData.add(p.getProductBrand());
 
+            if(!xData.contains(p.getProductBrand())) {
+                totalCarBrand.put(p.getProductBrand(), 0);
+                XYChart.Series<String, Number> carSeries = new XYChart.Series<>();
+                carSeries.setName(p.getProductBrand());
+                dataSets.put(p.getProductBrand(), carSeries);
+                xData.add(p.getProductBrand());
+            }
         }
     }
 
