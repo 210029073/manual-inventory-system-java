@@ -58,16 +58,52 @@ public class ProductListController {
     @FXML
     private TableColumn<Product, String> colTransmission;
 
+    @FXML
+    private ChoiceBox<String> genres;
+
     public void initialize() throws IOException {
         btnLoad();
         image.setAccessibleText("Please select an image");
+        setGenres();
+    }
+
+    public void setGenres(){
+        ObservableList<String> oL = FXCollections.observableArrayList();
+        oL.addAll("All Products","Audi","Mercedes");
+        genres.setItems(oL);
+    }
+
+    @FXML
+    public void prdFilter(){
+        if(genres.getValue() != null){
+            ProductCollections productCollections = new ProductCollections();
+            ArrayList<Product> data = new ArrayList<>(productCollections.getProducts(genres.getValue()));
+            btnLoad(data);
+        }
     }
 
     @FXML
     private void btnLoad() {
+        ObservableList<Product> prd = FXCollections.observableArrayList(makeData());
 
-        ProductCollections productCollections = new ProductCollections();
-        ArrayList<Product> data = new ArrayList<>(productCollections.getProducts());
+        //dummy product
+//        prd.add(new Product("330D", "BMW", "BMW E46 330D DIESEL 3.0 Litre V6 Engine", 1023.98F, 12, "na.img", 500));
+
+        colBrand.setCellValueFactory(cell -> cell.getValue().brandProperty());
+        colModel.setCellValueFactory(cell -> cell.getValue().modelProperty());
+        colDesc.setCellValueFactory(cell -> cell.getValue().productDescProperty());
+        colPrice.setCellValueFactory(cell -> cell.getValue().productPriceProperty().asObject());
+        colEngineSize.setCellValueFactory(cell -> cell.getValue().engineCapacityProperty().asObject());
+        colTransmission.setCellValueFactory(cell -> cell.getValue().transmissionProperty());
+        colStockLevel.setCellValueFactory(cell -> cell.getValue().quantityProperty().asObject());
+        colImagePath.setCellValueFactory(cell -> cell.getValue().imageFilePathProperty());
+        colLikes.setCellValueFactory(new PropertyValueFactory<>("Likes"));
+
+        tblProduct.setItems(prd);
+    }
+
+    @FXML
+    private void btnLoad(ArrayList<Product> data) {
         ObservableList<Product> prd = FXCollections.observableArrayList(data);
 
         //dummy product
@@ -174,5 +210,10 @@ public class ProductListController {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Product> makeData(){
+        ProductCollections productCollections = new ProductCollections();
+        return new ArrayList<>(productCollections.getProducts());
     }
 }

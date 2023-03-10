@@ -155,4 +155,32 @@ public class ProductCollections {
             System.err.println("Product doesnt exist "+ e);
         }
     return productShow;}
+
+    public List<Product> getProducts(String brd) {
+        try {
+            Connection connection = ManualDatabaseConnection.getInstance().getConnection();
+            PreparedStatement pstmt = connection.prepareStatement("SELECT * FROM products WHERE brand = ?");
+            pstmt.setString(1,brd);
+            ResultSet resultSet = pstmt.executeQuery();
+            while (resultSet.next()) {
+                Product product = new Product(
+                        resultSet.getString("model"),
+                        resultSet.getString("brand"),
+                        resultSet.getString("description"),
+                        resultSet.getFloat("price"),
+                        resultSet.getFloat("engine_capacity"),
+                        resultSet.getString("transmission"),
+                        resultSet.getInt("stock"),
+                        resultSet.getString("image"),
+                        resultSet.getInt("likes")
+                );
+                product.setID(resultSet.getInt("productsID"));
+                products.add(product);
+            }
+        }
+        catch (SQLException e) {
+            System.err.println("Failed to add a record: " + e.getMessage());
+        }
+        return products;
+    }
 }

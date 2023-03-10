@@ -1,13 +1,10 @@
 package com.manual;
 
-import com.manual.dashboard.DashboardController;
-import com.manual.login.LoginController;
-import com.manual.menu.MenuController;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ManualRunComponent extends Application {
