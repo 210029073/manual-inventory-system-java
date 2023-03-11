@@ -38,13 +38,13 @@ Though it is recommended to use IntelliJ IDEA as your IDE.
 
 ## Setup Project
 ### 1. Retrieve from the GitHub repository
-_If you wish to run the app without an IDE, please follow steps **3**._
+_If you wish to run the app without an IDE, please follow sections **Running Manual Inventory App**_
 ### 2. Import from Eclipse
 _This is for those who have Eclipse installed as their IDE, if you have
 IntelliJ IDEA please follow steps **2a**_
 ### 2a. Import from IntelliJ IDEA
 
-### 3. How to Run Manual Inventory System App
+## Running Manual Inventory System App
 
 ## Contributors
 ### <img src="https://avatars.githubusercontent.com/u/93045145?v=4" width="65" height="60" style="border-radius: 50%"> Ibrahim Ahmad
