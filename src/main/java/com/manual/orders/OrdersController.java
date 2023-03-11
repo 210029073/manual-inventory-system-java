@@ -115,7 +115,8 @@ public class OrdersController {
 
     @FXML
     public void detailView(MouseEvent event) {
-        detailImg.setImage(tblOrders.getSelectionModel().getSelectedItem().getImage());
+        Image image = new Image("/com.manual.main/cars/"+tblOrders.getSelectionModel().getSelectedItem().getProduct().getImageFilePath());
+        detailImg.setImage(image);
         orderDetail.setText(tblOrders.getSelectionModel().getSelectedItem().toString());
             // System.out.println(ords.getId());
 
