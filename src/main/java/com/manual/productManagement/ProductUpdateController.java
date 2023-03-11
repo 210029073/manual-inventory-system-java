@@ -86,6 +86,10 @@ public class ProductUpdateController {
                     FileUtils.getFile(f.getPath()),
                     FileUtils.getFile("src/main/resources/com.manual.main/cars/"+f.getName())
                     , true);
+            FileUtils.copyFile(
+                    FileUtils.getFile(f.getPath()),
+                    FileUtils.getFile("target/classes/com.manual.main/cars/"+f.getName())
+                    , true);
         }
     }
 

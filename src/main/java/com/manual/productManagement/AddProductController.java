@@ -65,6 +65,11 @@ public class AddProductController {
                 true
         );
 
+        FileUtils.copyFile(
+                FileUtils.getFile(f.getPath()),
+                FileUtils.getFile("target/classes/com.manual.main/cars/"+f.getName())
+                , true);
+
 
     }
 

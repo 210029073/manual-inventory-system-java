@@ -1,15 +1,15 @@
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\dashboard\AnnualSalesController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\model\ProductCollections.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\productManagement\ProductUpdateController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\menu\MenuController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\model\Product.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\dashboard\TrendingSalesController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\productManagement\ProductListController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\model\OrderCollections.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\orders\OrdersController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\ManualDatabaseConnection.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\model\Order.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\login\LoginController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\productManagement\AddProductController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\dashboard\DashboardController.java
-C:\xampp\htdocs\manual-inventory-system-java\src\main\java\com\manual\ManualRunComponent.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/productManagement/ProductUpdateController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/ManualRunComponent.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/dashboard/TrendingSalesController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/productManagement/AddProductController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/model/Product.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/dashboard/AnnualSalesController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/model/OrderCollections.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/model/Order.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/model/ProductCollections.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/login/LoginController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/menu/MenuController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/productManagement/ProductListController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/orders/OrdersController.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/ManualDatabaseConnection.java
+/home/ibrahim/Computer Science/2022-2023/CS2TP_-_Team_Project/Portfolio_2/manual-inventory-system-java/src/main/java/com/manual/dashboard/DashboardController.java
