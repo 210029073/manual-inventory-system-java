@@ -51,7 +51,7 @@ IntelliJ IDEA please follow steps **2a**_
 Maintainer of the repository, and main developer of the app.
 ### <img src="https://avatars.githubusercontent.com/u/108061867?v=4" width="65" height="60" style="border-radius: 50%"> Ahsaan Kumar
 ### <img src="https://avatars.githubusercontent.com/u/44678273?v=4" width="65" height="60" style="border-radius: 50%"> Victory Mpokosa
-Backend developer for the app, and final-tweaker for the app.
+Backend developer for the app, second developer for the app and Database designer.
 ### <img src="https://avatars.githubusercontent.com/u/116158678?v=4" width="65" height="60" style="border-radius: 50%"> Mohammed Ali
 ### <img src="https://avatars.githubusercontent.com/u/115076818?v=4" width="65" height="60" style="border-radius: 50%"> Jacques Winmill
 ### <img src="https://avatars.githubusercontent.com/u/116573741?v=4" width="65" height="60" style="border-radius: 50%"> Amir Khan
