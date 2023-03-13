@@ -61,16 +61,13 @@ public class OrderCollections {
                         sql.getDate("orderDate"),
                         sql.getBoolean("isProcessed")
                 );
-
                 pendingOrders.add(order);
             }
         }
-
         catch (SQLException e) {
             System.err.println("Failed to get orders.");
             e.printStackTrace();
         }
-
         return pendingOrders;
     }
 
@@ -89,16 +86,13 @@ public class OrderCollections {
                         sql.getDate("orderDate"),
                         sql.getBoolean("isProcessed")
                 );
-
                 pendingOrders.add(order);
             }
         }
-
         catch (SQLException e) {
             System.err.println("Failed to get orders.");
             e.printStackTrace();
         }
-
         return pendingOrders;
     }
     public void updateOrders(Order ord, Boolean result){
@@ -118,5 +112,30 @@ public class OrderCollections {
         } catch (SQLException e){
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Order> getOrders(String ord) {
+        ArrayList<Order> order = new ArrayList<>();
+        try{
+            Connection con = ManualDatabaseConnection.getInstance().getConnection();
+            PreparedStatement pstmt = con.prepareStatement("SELECT * FROM orders WHERE ordersId = ?");
+            pstmt.setString(1,ord);
+            ResultSet result = pstmt.executeQuery();
+            while(result.next()){
+                Order or = new Order(
+                        result.getInt("ordersId"),
+                        result.getInt("userId"),
+                        result.getInt("productsId"),
+                        result.getFloat("price"),
+                        result.getDate("deliveryDate"),
+                        result.getDate("orderDate"),
+                        result.getBoolean("isProcessed")
+                );
+                order.add(or);
+            }
+        } catch (SQLException e){
+            System.err.println("Failed to get Orders: " + e.getMessage());
+        }
+        return order;
     }
 }

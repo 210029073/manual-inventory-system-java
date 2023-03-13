@@ -69,28 +69,40 @@ public class OrdersController {
     @FXML
     private Label sizePending;
 
+    @FXML
+    private TextField txtOrdSearch;
 
-
+    private OrderCollections oc;
     public void initialize() {
         load();
+    }
+    @FXML
+    public void btnGo() {
+        System.out.println(txtOrdSearch.getText());
+        oc = new OrderCollections();
+        if (txtOrdSearch.getText().equals("All") || txtOrdSearch.getText().equals("")){
+            load();
+        }else {
+            load(oc.getOrders(txtOrdSearch.getText()));
+        }
     }
 
     @FXML
     public void btnDelivered() {
-        OrderCollections oc = new OrderCollections();
+        oc = new OrderCollections();
         oc.updateOrders(tblOrders.getSelectionModel().getSelectedItem(),true);
         load();
     }
 
     @FXML
     public void btnNot(){
-        OrderCollections oc = new OrderCollections();
+        oc = new OrderCollections();
         oc.updateOrders(tblOrders.getSelectionModel().getSelectedItem(),false);
         load();
     }
 
     public void load() {
-        OrderCollections oc = new OrderCollections();
+        oc = new OrderCollections();
         ArrayList<Order> orders = new ArrayList<>(oc.getOrders());
         ObservableList<Order> ord = FXCollections.observableArrayList(orders);
         ObservableList<Order> ods = FXCollections.observableArrayList(oc.getPendingOrders());
@@ -113,12 +125,33 @@ public class OrdersController {
 
     }
 
+    public void load(ArrayList<Order> orders) {
+        oc = new OrderCollections();
+        ObservableList<Order> ord = FXCollections.observableArrayList(orders);
+        ObservableList<Order> ods = FXCollections.observableArrayList(oc.getPendingOrders());
+        ObservableList<Order> past = FXCollections.observableArrayList(oc.getPastOrders());
+        colDevliveryDate.setCellValueFactory(cell -> cell.getValue().getDeliveryDate());
+        colStatus.setCellValueFactory(cell -> cell.getValue().getStatus());
+        colStock.setCellValueFactory(cell -> cell.getValue().getStock().asObject());
+        colProductID.setCellValueFactory(cell -> cell.getValue().getProductIdProperty().asObject());
+        colUserID.setCellValueFactory(cell -> cell.getValue().getUserIdProperty().asObject());
+        colOrderId.setCellValueFactory(cell -> cell.getValue().getIdProperty().asObject());
+
+        tblOrders.setItems(ord);
+        pendingOrds.setItems(ods);
+        pastOrds.setItems(past);
+        sizePast.setText(" "+past.size()+" ");
+        sizePending.setText(" "+ods.size()+" ");
+        orderDetail.setText("Description");
+        Image image = new Image("/com.manual.main/car.jpg");
+        detailImg.setImage(image);
+    }
+
     @FXML
     public void detailView(MouseEvent event) {
         Image image = new Image("/com.manual.main/cars/"+tblOrders.getSelectionModel().getSelectedItem().getProduct().getImageFilePath());
         detailImg.setImage(image);
         orderDetail.setText(tblOrders.getSelectionModel().getSelectedItem().toString());
             // System.out.println(ords.getId());
-
         }
 }

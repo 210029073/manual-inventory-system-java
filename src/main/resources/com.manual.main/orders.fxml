@@ -43,6 +43,7 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -131,14 +132,29 @@
             </AnchorPane>
         <AnchorPane SplitPane.resizableWithParent="false">
           <children>
-            <Label alignment="CENTER" font="$x1" layoutX="37.0" layoutY="14.0" prefHeight="27.0" prefWidth="192.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" />
-                  <Label fx:id="orderDetail" alignment="CENTER" layoutX="11.0" layoutY="244.0" />
-                  <ImageView fx:id="detailImg" fitHeight="150.0" fitWidth="200.0" layoutX="33.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@car.jpg" />
-                     </image></ImageView>
-                  <Button layoutX="33.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnDelivered" text="Delivered" />
-                  <Button layoutX="143.0" layoutY="406.0" mnemonicParsing="false" onMouseClicked="#btnNot" text="Not Delivered" />
+                  <SplitPane dividerPositions="0.7038404726735596" orientation="VERTICAL" prefHeight="543.0" prefWidth="264.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="316.0">
+                           <children>
+                        <Label alignment="CENTER" font="$x1" layoutX="67.0" prefHeight="27.0" prefWidth="192.0" style="&#10;" text="Details" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false" />
+                              <Label fx:id="orderDetail" alignment="CENTER" contentDisplay="CENTER" layoutX="58.0" layoutY="180.0" />
+                              <ImageView fx:id="detailImg" fitHeight="150.0" fitWidth="200.0" layoutX="58.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@car.jpg" />
+                                 </image>
+                              </ImageView>
+                              <Button layoutX="14.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#btnDelivered" text="Delivered" />
+                              <Button layoutX="212.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#btnNot" text="Not Delivered" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <TextField fx:id="txtOrdSearch" layoutX="14.0" layoutY="33.0" promptText="Search Orders.." />
+                              <Button layoutX="173.0" layoutY="33.0" mnemonicParsing="false" onMouseClicked="#btnGo" text="Go" />
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
           </children>
         </AnchorPane>
       </items>
