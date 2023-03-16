@@ -1,14 +1,3 @@
-/target/classes/
-/target/classes/com/manual/login/LoginController.class
-/target/classes/com/manual/menu/MenuController.class
-/target/classes/com.manual.main/add_employee.fxml
-/target/classes/com.manual.main/menu.fxml
-/target/classes/com/manual/model/
+/target/*
 /src/main/resources/com.manual.main/dashboard_1.fxml
-/target/classes/com/manual/dashboard/DashboardController.class
-/target/classes/com/manual/productManagement/AddProductController.class
-/target/classes/com/manual/productManagement/ProductListController.class
-/target/classes/com/manual/productManagement/ProductUpdateController.class
-/target/classes/com.manual.main/dashboard_1.fxml
-/target/classes/com.manual.main/list_products.fxml
-/target/classes/com.manual.main/update_stock.fxml
+
