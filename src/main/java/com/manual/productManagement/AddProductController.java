@@ -75,7 +75,7 @@ public class AddProductController {
     }
 
     @FXML
-    public void addItem() throws InvalidStockAmountException{
+    public void addItem(){
         ProductCollections pc = new ProductCollections();
 
         //validations
