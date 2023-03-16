@@ -96,7 +96,10 @@ public class AnnualSalesController {
         statisticsSummaryContainer.getChildren().add(meanContainer);
 
         //median
-        Float median = (Float) annualSales.getData().get(annualSales.getData().size()/2).getYValue();
+        Float median = 0F;
+        if(annualSales.getData().size() > 0) {
+            median = (Float) annualSales.getData().get(annualSales.getData().size()/2).getYValue();
+        }
         Text medianMsg = new Text("Median");
         medianMsg.setFont(new Font("Arial Bold", 24));
         Text medianVal = new Text("£" + String.format("%.2f", median));
