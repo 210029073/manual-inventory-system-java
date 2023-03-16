@@ -19,6 +19,10 @@ public class ProductCollections {
         this(new ArrayList<>());
     }
 
+    public boolean isQuantityValid(Product p) {
+        return p.getQuantity() >= 20;
+    }
+
     public void addProductRecord(Product product) {
         try {
             Connection connection = ManualDatabaseConnection.getInstance().getConnection();

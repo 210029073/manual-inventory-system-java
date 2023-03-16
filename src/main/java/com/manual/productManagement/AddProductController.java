@@ -91,6 +91,7 @@ public class AddProductController {
 
         try{
             Integer test = Integer.parseInt(txtProductStock.getText());
+
         }
         catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Please enter the stock value in numeric.");
@@ -123,6 +124,13 @@ public class AddProductController {
                 this.txtImagePath.getText(),
                 Integer.parseInt(txtProductPopularity.getText())
                 );
+
+        if(!pc.isQuantityValid(product)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Please input a quantity that is greater than or equal to 20.");
+            alert.setTitle("Error when specifying a quantity value");
+            alert.setHeaderText("Invalid stock amount");
+            alert.showAndWait();
+        }
         pc.addProductRecord(product);
 
         //success message after inputting data

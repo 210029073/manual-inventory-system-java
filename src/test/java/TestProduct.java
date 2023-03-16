@@ -19,6 +19,24 @@ public class TestProduct {
     }
 
     @Test
+    public void assertIfProductStockIsNotValid() {
+        Product product = new Product("M3", "BMW", "2011 BMW M3 E93",
+                1200F, 1.2F, "Automatic", 12, "n/a.png", 20);
+        ProductCollections productCollections = new ProductCollections();
+        productCollections.isQuantityValid(product);
+        Assertions.assertFalse(productCollections.isQuantityValid(product));
+    }
+
+    @Test
+    public void assertIfProductStockIsValid() {
+        Product product = new Product("M3", "BMW", "2011 BMW M3 E93",
+                1200F, 1.2F, "Automatic", 20, "n/a.png", 20);
+        ProductCollections productCollections = new ProductCollections();
+        productCollections.isQuantityValid(product);
+        Assertions.assertTrue(productCollections.isQuantityValid(product));
+    }
+
+    @Test
     public void assertNotNullIfProductRecordsAreNotEmpty() {
         ProductCollections productCollections = new ProductCollections();
         Assertions.assertNotNull(productCollections.getProducts(), "Product is null");
