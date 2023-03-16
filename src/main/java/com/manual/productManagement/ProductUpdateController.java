@@ -77,6 +77,7 @@ public class ProductUpdateController {
 
         Scene scene = new Scene(vBox);
         File f = fileChooser.showOpenDialog(vBox.getScene().getWindow());
+        String previousImage = txtImagePath.getText();
 
         if(f == null) {}
         else {
@@ -90,6 +91,13 @@ public class ProductUpdateController {
                     FileUtils.getFile(f.getPath()),
                     FileUtils.getFile("target/classes/com.manual.main/cars/"+f.getName())
                     , true);
+            //destroy old file
+            FileUtils.delete(
+                    FileUtils.getFile("target/classes/com.manual.main/cars/"+previousImage)
+            );
+            FileUtils.delete(
+                    FileUtils.getFile("src/main/resources/com.manual.main/cars/"+previousImage)
+            );
         }
     }
 
