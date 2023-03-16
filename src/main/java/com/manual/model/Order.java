@@ -55,7 +55,7 @@ public class Order {
         pc = new ProductCollections();
         prd = pc.showProduct(productId);
         process = statusCal(isProcessed);
-        this.isProcessed =isProcessed;
+        this.isProcessed = isProcessed;
     }
 
     public Order(){
