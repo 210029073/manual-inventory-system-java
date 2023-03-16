@@ -3,6 +3,15 @@ import com.manual.model.Product;
 import com.manual.model.ProductCollections;
 import org.junit.jupiter.api.*;
 
+/**
+ * This test is reponsible for testing if the products feature is working normal
+ * for the inventory system.
+ *
+ * The backend for handling product entities in the inventory system are functioning
+ * as intended.
+ *
+ * @author Ibrahim Ahmad 210029073@aston.ac.uk
+ * */
 public class TestProduct {
 
     @Test
