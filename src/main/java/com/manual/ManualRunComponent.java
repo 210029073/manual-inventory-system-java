@@ -3,6 +3,7 @@ package com.manual;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
@@ -20,6 +21,7 @@ public class ManualRunComponent extends Application {
         stage.setScene(new Scene(container));
         stage.setResizable(true);
         stage.setTitle("Inventory Management System - Dashboard");
+        stage.getIcons().add(new Image(getClass().getResource("/com.manual.main/Manual.jpg").toString()));
         stage.setMaximized(true);
         stage.show();
     }
