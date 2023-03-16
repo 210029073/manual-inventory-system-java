@@ -1,3 +1,4 @@
+import com.manual.exception.InvalidStockAmountException;
 import com.manual.model.Product;
 import com.manual.model.ProductCollections;
 import org.junit.jupiter.api.*;
@@ -13,27 +14,35 @@ public class TestProduct {
         ProductCollections productCollections = new ProductCollections();
         Product product = new Product("M3", "BMW", "2011 BMW M3 E93",
                 1200F, 1.2F, "Automatic", 12, "n/a.png", 20);
-        Product searchedProduct = productCollections.showProduct(1);
-        Assertions.assertNotNull(productCollections.showProduct(1));
+        Product searchedProduct = productCollections.showProduct(12);
+        Assertions.assertNotNull(productCollections.showProduct(12));
         Assertions.assertEquals(product.getProductBrand(), searchedProduct.getProductBrand());
     }
 
     @Test
-    public void assertIfProductStockIsNotValid() {
+    public void assertIfProductStockIsNotValid() throws InvalidStockAmountException {
         Product product = new Product("M3", "BMW", "2011 BMW M3 E93",
                 1200F, 1.2F, "Automatic", 12, "n/a.png", 20);
         ProductCollections productCollections = new ProductCollections();
-        productCollections.isQuantityValid(product);
-        Assertions.assertFalse(productCollections.isQuantityValid(product));
+        Assertions.assertFalse(productCollections.isQuantityValid(product.getQuantity()));
+        Assertions.assertThrows(InvalidStockAmountException.class, () -> productCollections.isQuantityValid(product), "Must throw an InvalidStockAmountException if stock amount is less than 20.");
     }
 
     @Test
-    public void assertIfProductStockIsValid() {
+    public void assertIfProductStockIsValid() throws InvalidStockAmountException {
         Product product = new Product("M3", "BMW", "2011 BMW M3 E93",
                 1200F, 1.2F, "Automatic", 20, "n/a.png", 20);
         ProductCollections productCollections = new ProductCollections();
         productCollections.isQuantityValid(product);
         Assertions.assertTrue(productCollections.isQuantityValid(product));
+    }
+
+    @Test
+    public void assertIfProductStockIsValidAndThrowsException() throws InvalidStockAmountException {
+        Product product = new Product("M3", "BMW", "2011 BMW M3 E93",
+                1200F, 1.2F, "Automatic", 12, "n/a.png", 20);
+        ProductCollections productCollections = new ProductCollections();
+        Assertions.assertThrows(InvalidStockAmountException.class, () -> productCollections.isQuantityValid(product), "Must throw an InvalidStockAmountException if stock amount is less than 20.");
     }
 
     @Test

@@ -1,5 +1,6 @@
 package com.manual.productManagement;
 
+import com.manual.exception.InvalidStockAmountException;
 import com.manual.model.ProductCollections;
 import com.manual.model.Product;
 import javafx.fxml.FXML;
@@ -74,7 +75,7 @@ public class AddProductController {
     }
 
     @FXML
-    public void addItem() {
+    public void addItem() throws InvalidStockAmountException{
         ProductCollections pc = new ProductCollections();
 
         //validations
@@ -91,6 +92,12 @@ public class AddProductController {
 
         try{
             Integer test = Integer.parseInt(txtProductStock.getText());
+            if(!pc.isQuantityValid(test)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please input a quantity that is greater than or equal to 20.");
+                alert.setTitle("Error when specifying a quantity value");
+                alert.setHeaderText("Invalid stock amount");
+                alert.showAndWait();
+            }
 
         }
         catch (NumberFormatException e) {
@@ -125,12 +132,6 @@ public class AddProductController {
                 Integer.parseInt(txtProductPopularity.getText())
                 );
 
-        if(!pc.isQuantityValid(product)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Please input a quantity that is greater than or equal to 20.");
-            alert.setTitle("Error when specifying a quantity value");
-            alert.setHeaderText("Invalid stock amount");
-            alert.showAndWait();
-        }
         pc.addProductRecord(product);
 
         //success message after inputting data

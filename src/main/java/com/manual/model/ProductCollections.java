@@ -1,5 +1,6 @@
 package com.manual.model;
 import com.manual.ManualDatabaseConnection;
+import com.manual.exception.InvalidStockAmountException;
 import com.manual.model.Product;
 
 import java.sql.*;
@@ -19,8 +20,22 @@ public class ProductCollections {
         this(new ArrayList<>());
     }
 
-    public boolean isQuantityValid(Product p) {
-        return p.getQuantity() >= 20;
+    public boolean isQuantityValid(Product p) throws InvalidStockAmountException {
+        if(p.getQuantity() >= 20) {
+            return true;
+        }
+        else {
+            throw new InvalidStockAmountException("Invalid stock amount");
+        }
+    }
+
+    public boolean isQuantityValid(Integer stockVal) {
+        if(stockVal >= 20) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     public void addProductRecord(Product product) {
