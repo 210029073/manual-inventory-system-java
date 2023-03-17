@@ -1,5 +1,6 @@
 package com.manual.dashboard;
 
+import com.manual.AboutController;
 import com.manual.menu.MenuController;
 import com.manual.model.Order;
 import com.manual.model.OrderCollections;
@@ -250,26 +251,26 @@ public class TrendingSalesController {
 
     @FXML
     public void viewAboutInfo() {
-        Stage stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        stage.setTitle("About");
-        stage.setResizable(false);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/about.fxml"));
+        final AboutController aboutController = new AboutController();
+        try {
+            Stage stage = new Stage();
+            loader.setController(aboutController);
+            Parent parent = loader.load();
 
-        VBox vbox = new VBox();
+            loader.setRoot(parent);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("About Manual Inventory System");
+            stage.setResizable(true);
+            stage.setMaximized(true);
 
-        String msg = "App used for managing inventory"
-                + "\n" + "Used MySQL as Server Database." +
-                "\n\n\n\n" + "Created by Team 21";
-
-        Label lblMsg = new Label(msg);
-        lblMsg.textAlignmentProperty().set(TextAlignment.CENTER);
-        lblMsg.setPadding(new Insets(10,10,10,10));
-
-        vbox.getChildren().add(lblMsg);
-
-        Scene scene = new Scene(vbox, 300, 150);
-        stage.setScene(scene);
-        stage.showAndWait();
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

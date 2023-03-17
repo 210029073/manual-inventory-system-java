@@ -1,9 +1,12 @@
 package com.manual.productManagement;
 
+import com.manual.AboutController;
 import com.manual.exception.InvalidStockAmountException;
 import com.manual.model.ProductCollections;
 import com.manual.model.Product;
+import com.manual.orders.OrdersController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -147,5 +150,34 @@ public class AddProductController {
     @FXML
     public void closeDialog() {
         txtTransmission.getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void onExit() {
+        txtTransmission.getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void onAbout() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/about.fxml"));
+        final AboutController aboutController = new AboutController();
+        try {
+            Stage stage = new Stage();
+            loader.setController(aboutController);
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("About Manual Inventory System");
+            stage.setResizable(true);
+            stage.setMaximized(true);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }
