@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<VBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@logo.jpg" />
+               </image>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Manual-transparent.png" />
+               </image>
+            </ImageView>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manual Inventory System" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Product Version:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2.1.0" />
+                  <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text layoutX="10.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build Information:" />
+                  <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build Date:  17-03-2023 12:09" />
+                  <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                  <Text layoutX="10.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JavaFX version: 17.0.1 " />
+                  <Text layoutX="10.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JDK version: 11" />
+               </children>
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TextArea editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" text="Created by Team 21 for CS2TP&#10;An inventory system designed for Managing Cars at Manual uses Java as its Backend. Manual is a certified car selling company which sells various types of automobiles whether if its vintage, new or used vehicles to all types of customers, including those who are buying a car for the first time.&#10;&#10;Their motto is 'Do It Yourself.'&#10;&#10;It is designed to provide support to the sales department when approving and rejecting orders from their customers, it supports the logistic department in terms of managing stock that are within inventory, automatically take action if a stock runs out, and it also supports the marketing department in order to reduce the hassle of analysing data via using data visualisations and statistic information relevant to the trending car products and annual car sales.&#10;&#10;Contributors:&#10;Ibrahim Ahmad (210029073)&#10;Victory Mpokosa&#10;Ahsaan Kumar&#10;Mohammed Ali&#10;Amir Khan&#10;Sydul Bari" wrapText="true" VBox.vgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TextArea>
+         </children>
+      </VBox>
+      <HBox alignment="BOTTOM_RIGHT">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#onClose" prefHeight="30.0" prefWidth="96.0" text="Close" />
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </HBox>
+   </children>
+</VBox>
