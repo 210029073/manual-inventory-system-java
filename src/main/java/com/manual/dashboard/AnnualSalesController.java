@@ -228,7 +228,7 @@ public class AnnualSalesController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("About Manual Inventory System");
             stage.setResizable(true);
-            stage.setMaximized(true);
+            stage.setMaximized(false);
 
             Scene scene = new Scene(parent);
             stage.setScene(scene);
