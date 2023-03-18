@@ -135,6 +135,11 @@ public class DashboardController {
     }
 
     @FXML
+    public void onRefresh() {
+        initialize();
+    }
+
+    @FXML
     public void pastOrders() {
         viewPastOrders();
     }

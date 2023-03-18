@@ -12,7 +12,7 @@
    <children>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0" style="-fx-background-color: grey;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="80.0" prefWidth="80.0" text="Refresh" />
+            <Button mnemonicParsing="false" onMouseClicked="#onRefresh" prefHeight="80.0" prefWidth="80.0" text="Refresh" />
             <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#viewMainMenu" prefHeight="80.0" prefWidth="80.0" text="Main Menu" textAlignment="CENTER" wrapText="true" />
             <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#pastOrders" prefHeight="80.0" prefWidth="80.0" text="Past Orders" textAlignment="CENTER" wrapText="true" />
             <Button layoutX="10.0" layoutY="170.0" mnemonicParsing="false" onMouseClicked="#onTrendingStocks" prefHeight="80.0" prefWidth="80.0" text="Trending Stocks" textAlignment="CENTER" wrapText="true" />
