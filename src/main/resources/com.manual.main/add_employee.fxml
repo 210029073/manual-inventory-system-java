@@ -94,7 +94,7 @@
                         <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <ComboBox fx:id="txtTransmission" accessibleText="Please select a transmission type" prefHeight="25.0" prefWidth="209.0" promptText="Please select a car transmission" />
+                  <ComboBox fx:id="txtTransmission" accessibleText="Please select a transmission type" prefHeight="25.0" prefWidth="250.0" promptText="Please select a car transmission" />
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
