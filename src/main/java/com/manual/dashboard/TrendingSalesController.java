@@ -29,10 +29,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * TrendingSalesController will simply show a bar chart showing
@@ -65,6 +62,8 @@ public class TrendingSalesController {
     private CategoryAxis xCarAxis;
     private NumberAxis yAxis;
     private BarChart<String, Number> barChart;
+    private String maxBrand;
+    private String minBrand;
 
     public TrendingSalesController() {
         this.totalCarBrand = new HashMap<>();
@@ -85,6 +84,10 @@ public class TrendingSalesController {
         setAnnualSalesText();
     }
 
+    /**
+     * This will therefore set the annual set sales text
+     *
+     * @author Ibrahim Ahmad <210029073@aston.ac.uk>*/
     private void setAnnualSalesText() {
         annualSalesContainer.setSpacing(10);
         annualSalesContainer.paddingProperty().setValue(new Insets(25));
@@ -105,6 +108,12 @@ public class TrendingSalesController {
 
     }
 
+    /**
+     * This will therefore prepare the trending sales graph in terms
+     * of populating data into the graphs.
+     *
+     * @author Ibrahim Ahmad <210029073@aston.ac.uk>
+     * */
     private void prepareTrendingSalesGraph() {
         xData = new ArrayList<>();
 
@@ -134,7 +143,7 @@ public class TrendingSalesController {
 
     private void plotData(BarChart<String, Number> barChart, OrderCollections orderCollections) {
         Float salesVal = 0.00F;
-
+        String profitGained = "";
         for (Order o : orderCollections.getPastOrders()) {
             XYChart.Series<String, Number> productBrand = dataSets.get(o.getProduct().getProductBrand());
             int oldValue = (int) totalCarBrand.get(o.getProduct().getProductBrand());
@@ -145,8 +154,12 @@ public class TrendingSalesController {
             totalCarBrand.replace(o.getProduct().getProductBrand(), oldValue, oldValue + 1);
             if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear()) {
                 salesVal += o.getProduct().getProductPrice();
-                this.txtAnnualSales.setText("£" + String.format("%.2f", salesVal));
+                profitGained = "£" + String.format("%.2f", salesVal);
             }
+            maxBrand = Collections.max((Collection) totalCarBrand.values()).toString();
+            minBrand = Collections.min((Collection) totalCarBrand.values()).toString();
+            setStatCarBrand();
+            txtAnnualSales.setText(profitGained + "\n\n" + "Mostly Brought Car " + "\n" + maxBrand + "\n\n" + "Least Brought Car " + "\n" + minBrand);
             dataSets.replace(o.getProduct().getProductBrand(), productBrand);
             barChart.getData().remove(productBrand);
             barChart.getData().add(productBrand);
@@ -201,6 +214,7 @@ public class TrendingSalesController {
         HBox statInfo = new HBox();
         //prepare the y axis
         Float salesVal = 0.00F;
+        String profitGained = "";
         for (Order o : orderCollections.getPastOrders()) {
             XYChart.Series<String, Number> productBrand = dataSets.get(o.getProduct().getProductBrand());
             int oldValue = (int) totalCarBrand.get(o.getProduct().getProductBrand());
@@ -211,12 +225,17 @@ public class TrendingSalesController {
             totalCarBrand.replace(o.getProduct().getProductBrand(), oldValue, oldValue + 1);
             if(LocalDate.parse(o.getOrderDate().toString()).getYear() == LocalDate.now().getYear()) {
                 salesVal += o.getProduct().getProductPrice();
-                newTotalProfitGained.setText("£" + String.format("%.2f", salesVal));
+                profitGained = "£" + String.format("%.2f", salesVal);
+//                newTotalProfitGained.setText("£" + String.format("%.2f", salesVal));
             }
             dataSets.replace(o.getProduct().getProductBrand(), productBrand);
             car.getData().remove(productBrand);
             car.getData().add(productBrand);
         }
+        maxBrand = Collections.max((Collection) totalCarBrand.values()).toString();
+        minBrand = Collections.min((Collection) totalCarBrand.values()).toString();
+        setStatCarBrand();
+        newTotalProfitGained.setText(profitGained + "\n\n" + "Mostly Brought Car " + "\n" + maxBrand + "\n\n" + "Least Brought Car " + "\n" + minBrand);
         statInfoContainer.getChildren().add(newTotalMsg);
         statInfoContainer.getChildren().add(newTotalProfitGained);
         statInfo.getChildren().add(statInfoContainer);
@@ -224,6 +243,28 @@ public class TrendingSalesController {
         statInfoContainer.paddingProperty().setValue(new Insets(25));
         graphContainer.getChildren().add(car);
         graphContainer.getChildren().add(statInfo);
+    }
+
+    /**
+     * Used to set the statistic information for mostly purchased cars
+     * and least purchased cars
+     *
+     * @author Ibrahim Ahmad <210029073@aston.ac.uk>
+     * @date 18-03-2023
+     * */
+    private void setStatCarBrand() {
+        int maxCar = Integer.parseInt(maxBrand);
+        int minCar = Integer.parseInt(minBrand);
+        for (Map.Entry<String, Number> result :totalCarBrand.entrySet()
+             ) {
+            if(maxCar == (int) result.getValue()) {
+                    maxBrand = result.getKey();
+            }
+
+            if(minCar == (int) result.getValue()) {
+                minBrand = result.getKey();
+            }
+        }
     }
 
     @FXML
