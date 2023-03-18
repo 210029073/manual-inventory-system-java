@@ -52,6 +52,7 @@ public class AddProductController {
         List<String> carTransmission = new ArrayList<>();
         carTransmission.add("Automatic");
         carTransmission.add("Manual");
+        carTransmission.add("Semi-Auto");
         this.txtTransmission.setItems(FXCollections.observableArrayList(carTransmission));
     }
     @FXML
