@@ -1,14 +1,14 @@
 package com.manual.productManagement;
 
+import com.manual.AboutController;
 import com.manual.model.Product;
 import com.manual.model.ProductCollections;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -18,6 +18,8 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductUpdateController {
     @FXML
@@ -41,11 +43,16 @@ public class ProductUpdateController {
     @FXML
     private TextField txtEngineCapacity;
     @FXML
-    private TextField txtTransmission;
+    private ComboBox<String> txtTransmission;
 
     private Product candidate;
 
     public void initialize() {
+        List<String> carTransmission = new ArrayList<>();
+        carTransmission.add("Automatic");
+        carTransmission.add("Manual");
+        carTransmission.add("Semi-Auto");
+        this.txtTransmission.setItems(FXCollections.observableArrayList(carTransmission));
         txtProductID.setText(Integer.toString(candidate.getId()));
         txtProductModel.setText(candidate.getProductModel());
         txtProductDescription.setText(candidate.getProductDescription());
@@ -54,7 +61,7 @@ public class ProductUpdateController {
         txtProductPopularity.setText(Integer.toString(candidate.getLikes()));
         txtProductPrice.setText(Float.toString(candidate.getProductPrice()));
         txtEngineCapacity.setText(Float.toString(candidate.getEngineCapacity()));
-        txtTransmission.setText(candidate.getTransmission());
+        txtTransmission.setValue(candidate.getTransmission());
         txtImagePath.setText(candidate.getImageFilePath());
     }
 
@@ -149,7 +156,7 @@ public class ProductUpdateController {
         this.candidate.setLikes(Integer.parseInt(txtProductPopularity.getText()));
         Product p = new Product(txtProductModel.getText(), txtProductBrand.getText(),
                 txtProductDescription.getText(), Float.parseFloat(txtProductPrice.getText()),
-                Float.parseFloat(txtEngineCapacity.getText()), txtTransmission.getText(),
+                Float.parseFloat(txtEngineCapacity.getText()), txtTransmission.getValue(),
                 Integer.parseInt(txtProductStock.getText()), txtImagePath.getText(), Integer.parseInt(txtProductPopularity.getText()));
         p.setID(candidate.getId());
         //update product record
@@ -168,5 +175,34 @@ public class ProductUpdateController {
     @FXML
     public void closeDialog() {
         txtProductID.getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void onExit() {
+        txtTransmission.getScene().getWindow().hide();
+    }
+
+    @FXML
+    public void onAbout() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/about.fxml"));
+        final AboutController aboutController = new AboutController();
+        try {
+            Stage stage = new Stage();
+            loader.setController(aboutController);
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("About Manual Inventory System");
+            stage.setResizable(true);
+            stage.setMaximized(true);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

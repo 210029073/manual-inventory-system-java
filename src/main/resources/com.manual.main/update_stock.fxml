@@ -2,114 +2,182 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="90.0" spacing="15.0" style="-fx-background-color: grey;">
          <children>
-            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="78.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
-            <Button layoutX="15.0" layoutY="204.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="75.0" prefWidth="67.0" />
+            <Button maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onExit" prefHeight="75.0" prefWidth="67.0" text="Exit" />
+            <Button layoutX="15.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onAbout" prefHeight="75.0" prefWidth="67.0" text="About" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </VBox>
-      <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="768.0" prefWidth="934.0">
+      <VBox maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="934.0" style="-fx-background-color: #dedede;" HBox.hgrow="ALWAYS">
          <children>
-            <HBox layoutX="110.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="id">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtProductID" editable="false" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Update a Car">
+                     <font>
+                        <Font name="Arial Bold" size="30.0" />
+                     </font>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </VBox>
+            <HBox layoutX="110.0" layoutY="119.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="40.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Product ID">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtProductID" editable="false" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="509.0" promptText="Product ID" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
                </padding>
             </HBox>
-            <HBox layoutX="130.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+            <HBox layoutX="130.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="40.0">
                <children>
-                  <Label text="Product Model">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtProductModel" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Product Model">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtProductModel" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="509.0" promptText="Enter a Car Model" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
                </padding>
             </HBox>
-            <HBox layoutX="130.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="13.0">
+            <HBox layoutX="130.0" layoutY="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="1000.0" spacing="13.0">
                <children>
-                  <Label text="Product Description">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextArea fx:id="txtProductDescription" maxWidth="1.7976931348623157E308" prefWidth="480.0" />
+                  <VBox prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label prefWidth="150.0" text="Product Description">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="86.0" prefWidth="375.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextArea fx:id="txtProductDescription" maxWidth="1.7976931348623157E308" prefWidth="511.0" promptText="Enter details about the car" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
                </padding>
             </HBox>
-            <HBox layoutX="130.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+            <HBox layoutX="130.0" layoutY="141.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="40.0">
                <children>
-                  <Label text="Product Brand">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtProductBrand" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Product Brand">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtProductBrand" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="500.0" promptText="Enter a Car Brand" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
                </padding>
             </HBox>
-            <HBox layoutX="130.0" layoutY="222.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+            <HBox layoutX="130.0" layoutY="222.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="40.0">
                <children>
-                  <Label text="Product Price:">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtProductPrice" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Product Price">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtProductPrice" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="513.0" promptText="Enter the pricing of the car" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
                </padding>
             </HBox>
-            <HBox layoutX="110.0" layoutY="366.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+            <HBox layoutX="110.0" layoutY="85.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="30.0">
                <children>
-                  <Label text="Engine Capacity">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtEngineCapacity" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <VBox prefHeight="200.0" prefWidth="110.0">
+                     <children>
+                        <Label text="Engine Capacity">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtEngineCapacity" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="513.0" promptText="Enter the Engine capacity of the car" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
                </padding>
             </HBox>
-            <HBox layoutX="110.0" layoutY="399.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
+            <HBox layoutX="110.0" layoutY="367.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="45.0">
                <children>
-                  <Label text="Car Transmission:">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtTransmission" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <VBox prefHeight="200.0" prefWidth="0.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Transmission Type">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <ComboBox fx:id="txtTransmission" accessibleText="Please select a transmission type" prefHeight="25.0" prefWidth="250.0" promptText="Please select a car transmission" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
@@ -117,12 +185,20 @@
             </HBox>
             <HBox layoutX="110.0" layoutY="328.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="43.0">
                <children>
-                  <Label text="Product Stock:">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtProductStock" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="480.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Product Stock">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="txtProductStock" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="508.0" promptText="Specify a stock amount" />
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
@@ -130,17 +206,33 @@
             </HBox>
             <HBox layoutX="110.0" layoutY="409.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0">
                <children>
-                  <Label text="Image path:">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="50.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtImagePath" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="240.0" />
-                  <Button mnemonicParsing="false" onMouseClicked="#fileBrowse" prefWidth="75.0" text="Browse">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </Button>
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Image path:">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="50.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="60.0" layoutY="35.0" prefHeight="200.0" prefWidth="345.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtImagePath" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="240.0" promptText="Please browse for an image">
+                           <VBox.margin>
+                              <Insets right="5.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="597.0" layoutY="35.0" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#fileBrowse" prefWidth="75.0" text="Browse">
+                           <padding>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </padding>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
@@ -148,12 +240,23 @@
             </HBox>
             <HBox layoutX="110.0" layoutY="409.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="81.0" spacing="15.0">
                <children>
-                  <Label text="Product Popularity">
-                     <padding>
-                        <Insets bottom="5.0" top="5.0" />
-                     </padding>
-                  </Label>
-                  <TextField fx:id="txtProductPopularity" maxWidth="1.7976931348623157E308" prefHeight="28.0" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Label text="Product Popularity">
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="175.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <TextField fx:id="txtProductPopularity" maxWidth="1.7976931348623157E308" prefHeight="28.0" promptText="Specify popularity amount" />
+                     </children>
+                     <HBox.margin>
+                        <Insets right="290.0" />
+                     </HBox.margin>
+                  </VBox>
                </children>
                <padding>
                   <Insets left="50.0" right="50.0" top="25.0" />
@@ -161,7 +264,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="110.0" layoutY="571.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" spacing="15.0">
                <padding>
-                  <Insets left="50.0" right="50.0" />
+                  <Insets bottom="15.0" left="50.0" right="50.0" top="15.0" />
                </padding>
                <children>
                   <Button mnemonicParsing="false" onMouseClicked="#updateItem" prefWidth="75.0" text="OK">
@@ -178,7 +281,7 @@
             </HBox>
          </children>
          <padding>
-            <Insets bottom="100.0" left="100.0" right="100.0" top="75.0" />
+            <Insets bottom="50.0" left="100.0" right="100.0" top="75.0" />
          </padding>
       </VBox>
    </children>
