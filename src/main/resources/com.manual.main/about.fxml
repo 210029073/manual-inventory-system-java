@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-
 <VBox fx:id="container" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="200.0">
@@ -31,10 +30,10 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manual Inventory System" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Product Version:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2.1.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3.0" />
                   <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <Text layoutX="10.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build Information:" />
-                  <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build Date:  17-03-2023 12:09" />
+                  <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Build Date:  27-03-2023 12:17" />
                   <Text layoutX="10.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                   <Text layoutX="10.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JavaFX version: 17.0.1 " />
                   <Text layoutX="10.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JDK version: 11" />

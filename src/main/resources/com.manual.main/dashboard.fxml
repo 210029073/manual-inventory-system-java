@@ -27,17 +27,17 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Pending Orders">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Text>
                   <Text fx:id="txtPendingOrderMsg" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial" size="14.0" />
                      </font>
                   </Text>
                   <Text fx:id="txtQuantityPendingOrder" layoutX="210.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial" size="14.0" />
                      </font>
                   </Text>
                   <Button fx:id="btnProcessOrder" mnemonicParsing="false" onMouseClicked="#pastOrders" prefHeight="40.0" text="Process Orders" />
@@ -50,17 +50,17 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Orders Approved">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Text>
                   <Text fx:id="txtOrdersApprovedMsg" layoutX="140.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial" size="14.0" />
                      </font>
                   </Text>
                   <Text fx:id="txtOrdersApprovedQuantity" layoutX="209.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial" size="14.0" />
                      </font>
                   </Text>
                   <Button fx:id="btnViewPastOrders" mnemonicParsing="false" onMouseClicked="#viewPastOrders" prefHeight="40.0" text="View Past Orders" />
@@ -75,23 +75,26 @@
          <children>
             <VBox fx:id="stockLevelContainer" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="364.0" prefWidth="100.0" spacing="5.0" style="-fx-background-color: #f8f9fa; -fx-border-color: grey; -fx-border-radius: 1.25%;" VBox.vgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Stock Levels">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory Stock Levels">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Text>
-                  <Label fx:id="lblStockTest" text="null" />
-                  <Text fx:id="txtStockLevelMsg" layoutX="116.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Label fx:id="lblStockTest" text="null" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial" size="13.0" />
+                     </font></Label>
+                  <Text fx:id="txtStockLevelMsg" fill="WHITE" layoutX="116.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                     <font>
+                        <Font name="Arial" size="14.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Text>
-                  <Text fx:id="txtStockLevelQuantity" layoutX="209.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
+                  <Text fx:id="txtStockLevelQuantity" fill="WHITE" layoutX="209.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="null">
                      <font>
-                        <Font size="14.0" />
+                        <Font name="Arial Bold" size="14.0" />
                      </font>
                   </Text>
                   <Button fx:id="btnUpdateStock" mnemonicParsing="false" onMouseClicked="#btnUpdateStock" prefHeight="40.0" text="Update Stock" />
@@ -104,12 +107,12 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total Stocks Available">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Arial Bold" size="20.0" />
                      </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="There is approximately">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="Arial" size="22.0" />
                      </font>
                      <VBox.margin>
                         <Insets top="100.0" />
@@ -117,12 +120,12 @@
                   </Text>
                   <Text fx:id="txtTotalStocks" layoutX="151.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Text>
                   <Text layoutX="217.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Stocks in Inventory">
                      <font>
-                        <Font size="20.0" />
+                        <Font name="Arial" size="20.0" />
                      </font>
                   </Text>
                </children>
