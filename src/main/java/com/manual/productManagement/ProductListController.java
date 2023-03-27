@@ -1,5 +1,6 @@
 package com.manual.productManagement;
 
+import com.manual.AboutController;
 import com.manual.model.ProductCollections;
 import com.manual.model.Product;
 import javafx.collections.FXCollections;
@@ -230,5 +231,28 @@ public class ProductListController {
     public ArrayList<Product> makeData(){
         ProductCollections productCollections = new ProductCollections();
         return new ArrayList<>(productCollections.getProducts());
+    }
+
+    @FXML
+    public void btnViewAbout() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/about.fxml"));
+        final AboutController aboutController = new AboutController();
+        try {
+            Stage stage = new Stage();
+            loader.setController(aboutController);
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("About Manual Inventory System");
+            stage.setResizable(true);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

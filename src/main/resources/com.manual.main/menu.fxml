@@ -20,9 +20,9 @@
             </ImageView>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Main Menu">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Inventory System">
                      <font>
-                        <Font name="Arial Bold" size="80.0" />
+                        <Font name="Arial Bold" size="71.0" />
                      </font>
                   </Text>
                </children>

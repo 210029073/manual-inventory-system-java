@@ -124,14 +124,7 @@ public class DashboardController {
 
     @FXML
     public void btnExit() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Are you sure you want to continue?", ButtonType.OK, ButtonType.CANCEL);
-        alert.setTitle("Exiting Inventory System");
-        alert.setHeaderText("Exiting Inventory System");
-        alert.showAndWait();
-
-        if(alert.getResult() == ButtonType.OK) {
-            System.exit(0);
-        }
+        this.lblStockTest.getScene().getWindow().hide();
     }
 
     @FXML
