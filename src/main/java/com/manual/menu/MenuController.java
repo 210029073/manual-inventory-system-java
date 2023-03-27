@@ -1,5 +1,6 @@
 package com.manual.menu;
 
+import com.manual.AboutController;
 import com.manual.dashboard.DashboardController;
 import com.manual.orders.OrdersController;
 import com.manual.productManagement.AddProductController;
@@ -146,5 +147,28 @@ public class MenuController {
     public void onTrendingCars() {
         DashboardController dc = new DashboardController();
         dc.onTrendingStocks();
+    }
+
+    @FXML
+    public void btnViewAbout() {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com.manual.main/about.fxml"));
+        final AboutController aboutController = new AboutController();
+        try {
+            Stage stage = new Stage();
+            loader.setController(aboutController);
+            Parent parent = loader.load();
+
+            loader.setRoot(parent);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("About Manual Inventory System");
+            stage.setResizable(true);
+
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.showAndWait();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

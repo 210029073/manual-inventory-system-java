@@ -182,8 +182,13 @@ public class ProductListController {
      * */
     public void changeImage() {
         Product p = tblProduct.getSelectionModel().getSelectedItem();
-        Image image1 = new Image(getClass().getResource("/com.manual.main/cars/"+p.getImageFilePath()).toString());
-        image.setImage(image1);
+        try {
+            Image image1 = new Image(getClass().getResource("/com.manual.main/cars/"+p.getImageFilePath()).toString());
+            image.setImage(image1);
+        }
+        catch (Exception e) {
+            image.setAccessibleText(p.getProductBrand() + " " + p.getProductModel());
+        }
         image.setPreserveRatio(true);
         image.setAccessibleText(p.getProductBrand() +" " + p.getProductModel());
     }
