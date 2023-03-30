@@ -49,7 +49,10 @@ public class DashboardController {
     private Text txtOrdersApprovedMsg;
 
     @FXML
-    private Text txtOrdersApprovedQuantity;
+    private Label txtOrdersApprovedQuantity;
+
+    @FXML
+    private Label txtOrderLevelTxt;
 
     @FXML
     private Button btnViewPastOrders;
@@ -105,8 +108,10 @@ public class DashboardController {
                 this.txtQuantityPendingOrder.setText("There are at least " + oc.getPendingOrders().size() + " orders that are pending.");
             }
             if (oc.getPastOrders().size() > 0) {
-                this.txtOrdersApprovedMsg.setText("Orders approved");
-                this.txtOrdersApprovedQuantity.setText("There is " + oc.getPastOrders().size() + " orders");
+                // this.txtOrdersApprovedMsg.setText("Orders approved");
+                this.txtOrdersApprovedQuantity.setText(""+ oc.getPastOrders().size()+"");
+                this.txtOrderLevelTxt.setText("Orders fulfilled");
+
             } else {
                 this.txtOrdersApprovedMsg.setText("No Orders approved.");
                 this.txtOrdersApprovedQuantity.setText("Currently 0 orders");
