@@ -43,12 +43,14 @@ _If you wish to run the app without an IDE, please follow sections **Running Man
 _This is for those who have Eclipse installed as their IDE, if you have
 IntelliJ IDEA please follow steps **2a**_
 _Please visit the link to setup JavaFX using Eclipse:  [Click Here](https://www.dropbox.com/s/1neibygv0xhc9an/how_to_run_javafx_app.mkv?dl=0).
-### 2a. Import from IntelliJ IDEA
 
+### 2a. Import from IntelliJ IDEA
 ![image](https://user-images.githubusercontent.com/93045145/229471262-dd24585c-b64a-4551-8d35-354fac71181f.png)
 - Simply click edit configurations
+
 ![image](https://user-images.githubusercontent.com/93045145/229471354-9c7a51b1-9853-4e39-859e-47edf591fa1a.png)
 - Then create a run configuration from maven
+
 ![image](https://user-images.githubusercontent.com/93045145/229471470-4ae74fe5-3ea3-41ab-bb57-4b8d83e1ea02.png)
 -  Set the goal `javafx:run -f pom.xml`
 
